@@ -1,0 +1,28 @@
+﻿Deliverable 1: Requirements and Use Cases
+List of at least 20 functional requirements and 5 non-functional requirements
+3 fully described use cases (no need for full diagram though)
+
+Dividing work:
+Each of us do 5 functional requirements
+3 of us complete 1 use case. Remaining person do the other 5 non-functional requirements
+
+
+
+
+
+
+Chris’ Work.
+
+Functional
+-The tasks in household chore manager will have the option to add a due date, urgency(1-5), and add notes.
+-Each account will have a name, profile picture, and birthday.
+-Household chore manager will have the option to assign an account to each chore.
+-The system shall hide the chore from list when completed.
+-The system shall have a completed chore section.
+
+Non Functional
+-Household chore manager will support version 25.3.1 and up.
+-Household chore manager's database shall be Firebase.
+-Household chore manager will be build in Android studio version 2.3.3.
+-Household chore manager will be programmed in Java Version 8.
+-The manager shall meet or exceed 99 % uptime.
