@@ -26,3 +26,15 @@ Non Functional
 -Household chore manager will be build in Android studio version 2.3.3.
 -Household chore manager will be programmed in Java Version 8.
 -The manager shall meet or exceed 99 % uptime.
+
+Ben's Work
+
+Functional
+-There will be two account types, Parent and Child
+-Parent accounts will be able to assign chores and modify their contents
+-Child accounts are only able to mark them as complete
+-Parent accounts will be able to reassign completed chores
+-Chores will be able to be assigned to one or multiple child accounts
+
+Non Functional
+-Thinkin bout it
