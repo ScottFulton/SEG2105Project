@@ -1,0 +1,52 @@
+class Task{
+  String name;
+  String description;
+  int urgency;   //1-5 rating of priority
+  Date dueDate;
+  int rewardPoints;
+  
+  bool completeTask(){};
+  1 -- Household;
+}
+
+class CompletedTask{
+  isA Task;
+  boolean confirmed;
+}
+
+class Household{
+  String familyName;
+  void newMember(){};
+    
+  1 -- * Account;
+  1 -- * Task;
+}
+
+class Account{
+  String name;
+  Date birthday;
+  String profilePicture;
+  
+  void newAccount();
+}
+
+class Parent{
+  isA Account;
+  void confirmTask(boolean complete){}
+  void reassignTask(){}
+  void NotifyTask(task Task){}
+}
+
+class Child{
+  isA Account;
+  void completeTask(task Task){};
+  void notifyTask(task Task){};
+}
+
+class Reward{
+ int pointCost; 
+  void claimReward(){};
+    
+ * -- 1 Household;
+  * -- 1 Account;
+}
