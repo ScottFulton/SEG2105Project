@@ -8,5 +8,7 @@ Members:
 
 
 UMPLE bookmarked link
-
+Class Diagram
 http://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=171117267855
+State Diagram
+http://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=171118951118
