@@ -1,0 +1,39 @@
+class Task{
+  state{
+    TaskCreated{
+        NotYetAssigned -> WaitingToBeAssigned;
+    }
+    
+    WaitingToBeAssigned{
+      Assigned -> AssignedToAccount;
+      RemoveTask -> Deleted;
+    }
+    
+    AssignedToAccount{
+      taskDone -> Completed;
+      RemoveTask -> Unassigned;
+    }
+    
+    Completed{
+      childsTask ->AddPointsToChild;
+      AddToList -> AddTaskToCompleted;
+    }
+      
+    Unassigned{
+      taskDeleted -> Deleted;
+      addToTaskList -> WaitingToBeAssigned;
+    }
+      
+    Deleted{
+    
+    }
+      
+    AddPointsToChild{
+    
+    }
+    
+    AddTaskToCompleted{
+      
+    }
+  }  
+}
