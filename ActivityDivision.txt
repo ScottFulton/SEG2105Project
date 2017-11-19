@@ -1,0 +1,33 @@
+1) Login Screen (MainActivity)
+	- Lists all created users (parents and kids) on scroll bar
+	- Below scroll menu, button that leads to "New User" activity (1.1)
+	- Once logged in as user, go to activity 2 (2.1 if child, 2.2 if parent)
+
+1.1) New User
+	- Allows creation of new user (Name and password fields)
+	- Two buttons below field, one to cancel user creation, and one to save user
+	- If creation canelled, go back to activity 1
+	- Otherwise initialize the new user in the database and go back to activity 1
+	- IMMPORTANT: New user must show up in the list of users in activity 1
+
+2.1) Chore List (Child)
+	- List available chores
+
+2.2) Chore List (Parent)
+	- List available chores
+	- Allows edit with "Manage Chores" Button, leads to activity 2.4 (Edit Chore)
+
+2.3) Chore View (Open to all actors)
+	- When a chore is clicked on from EITHER chore list, it brings up a more
+	  descriptive activity of the chore
+	- Lists off: Icon, Status, Name, Group, People Involved (?), Description, Resources
+
+2.4) Edit Chores
+	- Edit Pic, name, due date assigned to , resources needed, point reward, save or not save
+
+
+Burger Menu (Available from all activities)
+	- 
+
+
+
