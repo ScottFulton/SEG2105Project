@@ -23,7 +23,11 @@
 	- Lists off: Icon, Status, Name, Group, People Involved (?), Description, Resources
 
 2.4) Edit Chores
-	- Edit Pic, name, due date assigned to , resources needed, point reward, save or not save
+	- Standardized for each chore
+	- Allows edit of icon, name, group, due date, people assigned to , resources needed, point reward
+		- EDIT: Icon is not editable, icon changes with the GROUP entry
+	- Button at bottom to save or not save (Will create new entry in 2.1/2.2 if saved)
+	- If not saved, just return to 2.1/2.2 without saving
 
 
 Burger Menu (Available from all activities)
