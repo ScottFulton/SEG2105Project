@@ -1,4 +1,4 @@
-package uncreative.name.householdchoremanager;
+package project.seg.householdchoremanager;
 
 import org.junit.Test;
 
