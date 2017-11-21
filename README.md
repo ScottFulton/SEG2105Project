@@ -18,3 +18,10 @@ Kevin - Title Screen / Login
 Scott - Edit Chore / Add Account / ManageChores
 Ben - Main Adult / Main Screen Child / Detail Chore
 Chris - Burger Menu / Groups
+
+Colour Scheme
+#E63946 red
+#F1FAEE cream
+#A8DADC light blue
+#457B9D blue
+#1D3557 dark blue
