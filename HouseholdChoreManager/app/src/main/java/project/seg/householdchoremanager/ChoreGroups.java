@@ -13,7 +13,7 @@ public class ChoreGroups extends AppCompatActivity {
 
 
         String[] choreList = {"Walk Dog", "Do the Dishes", "Clean Room", "Make Bed", "Take Trash Out"};
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(R.id.choreList);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this,choreList);
         listView.setAdapter(adapter);
     };
