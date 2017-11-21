@@ -2,6 +2,7 @@
     <string name="app_name">HouseholdChoreManager</string>
 
     <!--Groups for Chores-->
+    <string name="toGroups">Groups</string>
     <string name="group1">Group 1</string>
     <string name="group2">Group 2</string>
     <string name="group3">Group 3</string>
