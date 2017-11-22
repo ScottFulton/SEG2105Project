@@ -12,7 +12,7 @@ public class ChoreGroups extends AppCompatActivity {
         setContentView(R.layout.activity_chore_groups);
 
 
-        String[] choreList = {"Walk Dog", "Do the Dishes", "Clean Room", "Make Bed", "Take Trash Out"};
+        String[] choreList = {"Chore 1", "Chore 2", "Chore 3", "Chore 4", "Chore 5"};
         ListView listView = (ListView) findViewById(R.id.choreList);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this,choreList);
         listView.setAdapter(adapter);
