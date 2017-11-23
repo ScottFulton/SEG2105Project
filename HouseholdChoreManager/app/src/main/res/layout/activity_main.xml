@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="project.seg.householdchoremanager.MainActivity">
 
+    <!--TAKE THIS OUT IF NEEDED. USED TO ACCESS GROUPS PAGE BUT ISNT NEEDED.-->
     <Button
         android:id="@+id/toGroups"
         android:layout_width="wrap_content"

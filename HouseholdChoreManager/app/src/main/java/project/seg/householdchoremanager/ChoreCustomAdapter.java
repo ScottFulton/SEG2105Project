@@ -30,7 +30,7 @@ public class ChoreCustomAdapter extends ArrayAdapter {
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
         ImageView choreImage = (ImageView) rowView.findViewById(R.id.icon);
         choreNameTextField.setText(myChores[position]);
-        choreDescriptionTextField.setText("Due: December 6th \nAssigned to: Name");
+        choreDescriptionTextField.setText("Due: December 6th \nAssigned to: Name");//TODO switch out date and name with database values.
         return rowView;
     }
 
