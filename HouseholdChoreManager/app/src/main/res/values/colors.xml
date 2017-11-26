@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!--this is where the colours are for our app-->
+<!--<resources>
+    <!-this is where the colours are for our app
     <color name="colorPrimary">#457B9D</color>
     <color name="colorPrimaryDark">#335A73</color>
     <color name="colorAccent">#E63946</color>
     <color name="colorNavMenu">#F1FAEE</color>
+</resources>-->
+<resources>
+    <color name="colorAccent">#E63946</color>
+    <color name="colorPrimaryDark">#1c739d</color>
+    <color name="colorPrimary">#59a2ce</color>
+    <color name="background_light_2">#fcfffa</color>
 </resources>
