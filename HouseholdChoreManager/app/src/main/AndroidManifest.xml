@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".TitleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,8 +28,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TitleActivity" />
-        <!--<activity android:name=".LoginActivity"></activity>-->
+        <activity android:name=".LoginActivity" />
+        <!-- <activity android:name=".LoginActivity"></activity> -->
+        <activity android:name=".NewUserActivity"></activity>
     </application>
 
 </manifest>
