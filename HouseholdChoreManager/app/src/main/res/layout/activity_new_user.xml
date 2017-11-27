@@ -6,4 +6,63 @@
     android:layout_height="match_parent"
     tools:context="project.seg.householdchoremanager.NewUserActivity">
 
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="128dp"
+        android:layout_height="119dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        tools:layout_editor_absoluteY="72dp"
+        tools:layout_editor_absoluteX="128dp" />
+
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="(Password)"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="(Name)"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="191dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="(Confirm Password)"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="272dp" />
+
+    <LinearLayout
+        android:layout_width="214dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="315dp">
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Enter" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
