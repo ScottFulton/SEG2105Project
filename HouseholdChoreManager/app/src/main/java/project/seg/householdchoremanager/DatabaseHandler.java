@@ -18,6 +18,14 @@ import android.database.Cursor;
  * Chore/Description/Resources/Group/Reward
  */
 
+
+
+    /*Likely future operations:
+        - Read ALL chore values from table for information (implemented)
+        - Compare user login info to tables (working on it)
+        - Probably more
+    */
+
 public class DatabaseHandler extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "HouseChores.db";
@@ -66,9 +74,39 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    /*Likely future operations:
-        - Read ALL chore values from table for information
-        - 
 
-    */
+
+    public void addChore(Chore chore){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CHORES, chore.getName());
+        values.put(COLUMN_DESCRIPTION, chore.getDescription());
+        values.put(COLUMN_RESOURCES, chore.getResources());
+        values.put(COLUMN_GROUP, chore.getGroup());
+        values.put(COLUMN_REWARD, chore.getReward());
+
+        db.insert(TABLE_CHORES, null, values);
+        db.close();
+    }
+
+    public Chore getChoreByName(String name){
+        Chore chore = new Chore();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORES + " = \"" + name
+                + "\"";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+            chore.setName(cursor.getString(0));
+            chore.setDescription(cursor.getString(1));
+
+        }
+    }
+
+    public void getAllChores(){
+
+    }
+
+
+
 }
