@@ -101,6 +101,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
             chore.setDescription(cursor.getString(1));
 
         }
+        return null;
     }
 
     public void getAllChores(){

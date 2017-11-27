@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.graphics.Color;
 
 public class ChoreGroups extends AppCompatActivity {
 
@@ -33,21 +34,31 @@ public class ChoreGroups extends AppCompatActivity {
         ChoreCustomAdapter adapter4 = new ChoreCustomAdapter(this, choreList4);
         listView4.setAdapter(adapter4);
 
-        listView.setVisibility(View.INVISIBLE);
+        listView.setVisibility(View.VISIBLE);
         listView2.setVisibility(View.INVISIBLE);
         listView3.setVisibility(View.INVISIBLE);
         listView4.setVisibility(View.INVISIBLE);
 
         //Group Buttons
-        Button group1 = (Button) findViewById(R.id.button4);
-        Button group2 = (Button) findViewById(R.id.button3);
-        Button group3 = (Button) findViewById(R.id.button2);
-        Button group4 = (Button) findViewById(R.id.button);
+        final Button group1 = (Button) findViewById(R.id.button4);
+        final Button group2 = (Button) findViewById(R.id.button3);
+        final Button group3 = (Button) findViewById(R.id.button2);
+        final Button group4 = (Button) findViewById(R.id.button);
+
+        group1.setBackgroundColor(Color.parseColor("#1c739d"));
+        group2.setBackgroundColor(Color.parseColor("#59a2ce"));
+        group3.setBackgroundColor(Color.parseColor("#59a2ce"));
+        group4.setBackgroundColor(Color.parseColor("#59a2ce"));
+
 
         //onclick hide different lists
         group1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                group1.setBackgroundColor(Color.parseColor("#1c739d"));
+                group2.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group3.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group4.setBackgroundColor(Color.parseColor("#59a2ce"));
                 listView2.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.INVISIBLE);
@@ -57,6 +68,10 @@ public class ChoreGroups extends AppCompatActivity {
         group2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                group1.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group2.setBackgroundColor(Color.parseColor("#1c739d"));
+                group3.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group4.setBackgroundColor(Color.parseColor("#59a2ce"));                listView.setVisibility(View.INVISIBLE);
                 listView.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.INVISIBLE);
@@ -66,6 +81,10 @@ public class ChoreGroups extends AppCompatActivity {
         group3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                group1.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group2.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group3.setBackgroundColor(Color.parseColor("#1c739d"));
+                group4.setBackgroundColor(Color.parseColor("#59a2ce"));
                 listView.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.INVISIBLE);
                 listView2.setVisibility(View.INVISIBLE);
@@ -75,6 +94,10 @@ public class ChoreGroups extends AppCompatActivity {
         group4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                group1.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group2.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group3.setBackgroundColor(Color.parseColor("#59a2ce"));
+                group4.setBackgroundColor(Color.parseColor("#1c739d"));
                 listView.setVisibility(View.INVISIBLE);
                 listView2.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.INVISIBLE);
