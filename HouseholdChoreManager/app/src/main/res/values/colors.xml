@@ -10,6 +10,7 @@
     <color name="colorPrimaryDark">#1c739d</color>
     <color name="colorPrimary">#59a2ce</color>
     <color name="background_light_2">#fcfffa</color>
+    <color name="colorNavMenu">#F1FAEE</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>
