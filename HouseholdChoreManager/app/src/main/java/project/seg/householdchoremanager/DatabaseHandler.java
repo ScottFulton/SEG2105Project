@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+
+import java.sql.ResultSet;
 import java.util.LinkedList;
 /**
  * Created by Kevin on 26/11/17.
@@ -113,6 +115,44 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         */
 
         return null;
+    }
+
+    public Chore[] getAllChores(){
+        SQLiteDatabase db = this.getReadableDatabase();
+//        int choreCount = db.execSQL("SELECT COUNT(*) FROM [Chore]");
+        Chore[] choreList = new Chore[1000];
+        int arrayLocation = 0;
+        //cursor is used to parse through the rows of table used with .moveToNext
+        Cursor cursorDB = db.rawQuery("SELECT * FROM TABLE",null);
+        if(cursorDB.moveToFirst()){
+            String name = cursorDB.getString(cursorDB.getColumnIndex("Chore"));
+            String desc = cursorDB.getString(cursorDB.getColumnIndex("Description"));
+            String res = cursorDB.getString(cursorDB.getColumnIndex("Resources"));
+            String grp = cursorDB.getString(cursorDB.getColumnIndex("Group"));
+            String reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));
+            int rewardInt = Integer.parseInt(reward);
+
+            Chore newChore = new Chore(name,desc,res,grp,rewardInt);
+            // TODO - res is asking for String[] but is stored as String
+            choreList[arrayLocation] = newChore;
+            arrayLocation++;
+
+            while(cursorDB.moveToNext()){
+                name = cursorDB.getString(cursorDB.getColumnIndex("Chore"));
+                desc = cursorDB.getString(cursorDB.getColumnIndex("Description"));
+                res = cursorDB.getString(cursorDB.getColumnIndex("Resources"));
+                grp = cursorDB.getString(cursorDB.getColumnIndex("Group"));
+                reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));
+                rewardInt = Integer.parseInt(reward);
+
+                newChore = new Chore(name,desc,res,grp,rewardInt);
+                // TODO - res is asking for String[] but is stored as String
+                choreList[arrayLocation] = newChore;
+                arrayLocation++;
+            }
+        }
+
+        return choreList;
     }
 
     /*OTHER METHODS WE SHOULD ADD:

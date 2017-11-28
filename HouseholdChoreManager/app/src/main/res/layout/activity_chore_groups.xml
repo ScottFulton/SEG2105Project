@@ -24,7 +24,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
         <ListView
             android:id="@+id/choreList2"
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
         <ListView
             android:id="@+id/choreList3"
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
         <ListView
             android:id="@+id/choreList4"
             android:layout_width="wrap_content"
@@ -48,7 +48,36 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        <ListView
+            android:id="@+id/choreList5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <Button
+                android:id="@+id/FullHouseBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/FullHouse"
+                tools:ignore="ButtonStyle"
+                android:textSize="12sp"/>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -66,32 +95,40 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/BedroomBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/group1"
-                tools:ignore="ButtonStyle" />
+                android:text="@string/Bedroom"
+                tools:ignore="ButtonStyle"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/KitchenBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/group2"
-                tools:ignore="ButtonStyle" />
+                android:text="@string/Kitchen"
+                tools:ignore="ButtonStyle"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/BathroomBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/group3"
-                tools:ignore="ButtonStyle" />
+                android:text="@string/Bathroom"
+                tools:ignore="ButtonStyle"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/OutdoorBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/group4"
-                tools:ignore="ButtonStyle" />
+                android:text="@string/Outdoor"
+                tools:ignore="ButtonStyle"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
