@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import java.util.LinkedList;
 /**
  * Created by Kevin on 26/11/17.
  * Just a reimplementation of the code found in the Android Lab on SQLite.
@@ -45,6 +46,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     public static final String COLUMN_GROUP = "Group";
     public static final String COLUMN_REWARD = "Reward";
 
+
     public DatabaseHandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -79,6 +81,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     public void addChore(Chore chore){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put(COLUMN_CHORES, chore.getName());
         values.put(COLUMN_DESCRIPTION, chore.getDescription());
         values.put(COLUMN_RESOURCES, chore.getResources());
@@ -90,6 +93,10 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     }
 
     public Chore getChoreByName(String name){
+        //Not implemented yet! I got stuck trying to figure out how to put resources
+        //into the chore that will be returned
+
+        /*
         Chore chore = new Chore();
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORES + " = \"" + name
@@ -99,15 +106,24 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         if(cursor.moveToFirst()){
             chore.setName(cursor.getString(0));
             chore.setDescription(cursor.getString(1));
+            chore.setResources();
 
         }
+        cursor.close();
+        */
+
         return null;
     }
 
-    public void getAllChores(){
+    /*OTHER METHODS WE SHOULD ADD:
+        - getAllChores()              Return an array of every chore we have. Makes it easier later on to
+                                      list them all in ChoreGroups.
 
-    }
+        - deleteChore(String name)    Remove a chore completely from the database
 
+        - editChore(Chore chore)      Use deleteChore() to remove the old entry, and just replace it
+                                      with "chore"
+    */
 
 
 }
