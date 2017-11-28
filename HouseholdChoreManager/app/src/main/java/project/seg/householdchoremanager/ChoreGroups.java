@@ -33,75 +33,105 @@ public class ChoreGroups extends AppCompatActivity {
         final ListView listView4 = (ListView) findViewById(R.id.choreList4);
         ChoreCustomAdapter adapter4 = new ChoreCustomAdapter(this, choreList4);
         listView4.setAdapter(adapter4);
+        String[] choreList5 = {"Chore test 4", "Chore 2", "Chore 3", "Chore 4", "Chore 5"};
+        final ListView listView5 = (ListView) findViewById(R.id.choreList5);
+        ChoreCustomAdapter adapter5 = new ChoreCustomAdapter(this, choreList5);
+        listView5.setAdapter(adapter5);
 
         listView.setVisibility(View.VISIBLE);
         listView2.setVisibility(View.INVISIBLE);
         listView3.setVisibility(View.INVISIBLE);
         listView4.setVisibility(View.INVISIBLE);
+        listView5.setVisibility(View.INVISIBLE);
 
         //Group Buttons
-        final Button group1 = (Button) findViewById(R.id.button4);
-        final Button group2 = (Button) findViewById(R.id.button3);
-        final Button group3 = (Button) findViewById(R.id.button2);
-        final Button group4 = (Button) findViewById(R.id.button);
+        final Button Bedroom = (Button) findViewById(R.id.BedroomBtn);
+        final Button Kitchen = (Button) findViewById(R.id.KitchenBtn);
+        final Button Bathroom = (Button) findViewById(R.id.BathroomBtn);
+        final Button Outdoor = (Button) findViewById(R.id.OutdoorBtn);
+        final Button FullHouse = (Button) findViewById(R.id.FullHouseBtn);
 
-        group1.setBackgroundColor(Color.parseColor("#1c739d"));
-        group2.setBackgroundColor(Color.parseColor("#59a2ce"));
-        group3.setBackgroundColor(Color.parseColor("#59a2ce"));
-        group4.setBackgroundColor(Color.parseColor("#59a2ce"));
+        Bedroom.setBackgroundColor(Color.parseColor("#1c739d"));
+        Kitchen.setBackgroundColor(Color.parseColor("#59a2ce"));
+        Bathroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+        Outdoor.setBackgroundColor(Color.parseColor("#59a2ce"));
+        FullHouse.setBackgroundColor(Color.parseColor("#59a2ce"));
 
 
         //onclick hide different lists
-        group1.setOnClickListener(new View.OnClickListener() {
+        Bedroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                group1.setBackgroundColor(Color.parseColor("#1c739d"));
-                group2.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group3.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group4.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Bedroom.setBackgroundColor(Color.parseColor("#1c739d"));
+                Kitchen.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Bathroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Outdoor.setBackgroundColor(Color.parseColor("#59a2ce"));
+                FullHouse.setBackgroundColor(Color.parseColor("#59a2ce"));
                 listView2.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.INVISIBLE);
+                listView5.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.INVISIBLE);
                 listView.setVisibility(View.VISIBLE);
             }
         });
-        group2.setOnClickListener(new View.OnClickListener() {
+        Kitchen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                group1.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group2.setBackgroundColor(Color.parseColor("#1c739d"));
-                group3.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group4.setBackgroundColor(Color.parseColor("#59a2ce"));                listView.setVisibility(View.INVISIBLE);
+                Bedroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Kitchen.setBackgroundColor(Color.parseColor("#1c739d"));
+                Bathroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Outdoor.setBackgroundColor(Color.parseColor("#59a2ce"));
+                FullHouse.setBackgroundColor(Color.parseColor("#59a2ce"));
                 listView.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.INVISIBLE);
+                listView5.setVisibility(View.INVISIBLE);
                 listView2.setVisibility(View.VISIBLE);
             }
         });
-        group3.setOnClickListener(new View.OnClickListener() {
+        Bathroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                group1.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group2.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group3.setBackgroundColor(Color.parseColor("#1c739d"));
-                group4.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Bedroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Kitchen.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Bathroom.setBackgroundColor(Color.parseColor("#1c739d"));
+                Outdoor.setBackgroundColor(Color.parseColor("#59a2ce"));
+                FullHouse.setBackgroundColor(Color.parseColor("#59a2ce"));
                 listView.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.INVISIBLE);
                 listView2.setVisibility(View.INVISIBLE);
+                listView5.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.VISIBLE);
             }
         });
-        group4.setOnClickListener(new View.OnClickListener() {
+        Outdoor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                group1.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group2.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group3.setBackgroundColor(Color.parseColor("#59a2ce"));
-                group4.setBackgroundColor(Color.parseColor("#1c739d"));
+                Bedroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Kitchen.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Bathroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Outdoor.setBackgroundColor(Color.parseColor("#1c739d"));
+                FullHouse.setBackgroundColor(Color.parseColor("#59a2ce"));
                 listView.setVisibility(View.INVISIBLE);
                 listView2.setVisibility(View.INVISIBLE);
                 listView3.setVisibility(View.INVISIBLE);
+                listView5.setVisibility(View.INVISIBLE);
                 listView4.setVisibility(View.VISIBLE);
+            }
+        });
+        FullHouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bedroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Kitchen.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Bathroom.setBackgroundColor(Color.parseColor("#59a2ce"));
+                Outdoor.setBackgroundColor(Color.parseColor("#59a2ce"));
+                FullHouse.setBackgroundColor(Color.parseColor("#1c739d"));
+                listView.setVisibility(View.INVISIBLE);
+                listView2.setVisibility(View.INVISIBLE);
+                listView3.setVisibility(View.INVISIBLE);
+                listView4.setVisibility(View.INVISIBLE);
+                listView5.setVisibility(View.VISIBLE);
             }
         });
 

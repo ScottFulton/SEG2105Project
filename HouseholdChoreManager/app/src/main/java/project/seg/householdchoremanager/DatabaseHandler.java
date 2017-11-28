@@ -123,14 +123,14 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         Chore[] choreList = new Chore[1000];
         int arrayLocation = 0;
         //cursor is used to parse through the rows of table used with .moveToNext
-        Cursor cursorDB = db.rawQuery("SELECT * FROM TABLE",null);                      //$
+        Cursor cursorDB = db.rawQuery("SELECT * FROM TABLE",null);
         if(cursorDB.moveToFirst()){
             String name = cursorDB.getString(cursorDB.getColumnIndex("Chore"));
             String desc = cursorDB.getString(cursorDB.getColumnIndex("Description"));
             String res = cursorDB.getString(cursorDB.getColumnIndex("Resources"));
-            String[] resList = res.split(",");                                          //$
+            String[] resList = res.split(",");
             String grp = cursorDB.getString(cursorDB.getColumnIndex("Group"));
-            String reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));      //$
+            String reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));
             int rewardInt = Integer.parseInt(reward);
 
             Chore newChore = new Chore(name,desc,resList,grp,rewardInt);
@@ -142,7 +142,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
                 name = cursorDB.getString(cursorDB.getColumnIndex("Chore"));
                 desc = cursorDB.getString(cursorDB.getColumnIndex("Description"));
                 res = cursorDB.getString(cursorDB.getColumnIndex("Resources"));
-                resList = res.split(",");                                               //$
+                resList = res.split(",");
                 grp = cursorDB.getString(cursorDB.getColumnIndex("Group"));
                 reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));
                 rewardInt = Integer.parseInt(reward);
