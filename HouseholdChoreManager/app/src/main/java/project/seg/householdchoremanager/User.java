@@ -10,11 +10,13 @@ public class User {
     private String name;
     private String password; //Yeah security isn't our top priority around these parts...
     private boolean adult;  //Yes/no if this user is an adult
+    private int points;
 
-    public User(String nom, String passwd, boolean adlt){
+    public User(String nom, String passwd, boolean adlt, int ponts){
         name = nom;
         password = passwd;
         adult = adlt;
+        points = ponts;
     }
 
     public String getName(){
@@ -27,5 +29,25 @@ public class User {
 
     public boolean isAdult(){
         return adult;
+    }
+
+    public int getPoints(){
+        return points;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setAdult(boolean adult){
+        this.adult = adult;
+    }
+
+    public void setPoints(int howMany){
+        this.points = howMany;
     }
 }
