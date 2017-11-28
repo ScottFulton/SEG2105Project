@@ -118,8 +118,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     }
 
     public Chore[] getAllChores(){
+        //created by Chris 2017/11/27
         SQLiteDatabase db = this.getReadableDatabase();
-//        int choreCount = db.execSQL("SELECT COUNT(*) FROM [Chore]");
         Chore[] choreList = new Chore[1000];
         int arrayLocation = 0;
         //cursor is used to parse through the rows of table used with .moveToNext
@@ -128,12 +128,13 @@ public class DatabaseHandler extends SQLiteOpenHelper{
             String name = cursorDB.getString(cursorDB.getColumnIndex("Chore"));
             String desc = cursorDB.getString(cursorDB.getColumnIndex("Description"));
             String res = cursorDB.getString(cursorDB.getColumnIndex("Resources"));
+            String[] resList = res.split(",");
             String grp = cursorDB.getString(cursorDB.getColumnIndex("Group"));
             String reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));
             int rewardInt = Integer.parseInt(reward);
 
-            Chore newChore = new Chore(name,desc,res,grp,rewardInt);
-            // TODO - res is asking for String[] but is stored as String
+            Chore newChore = new Chore(name,desc,resList,grp,rewardInt);
+
             choreList[arrayLocation] = newChore;
             arrayLocation++;
 
@@ -141,12 +142,12 @@ public class DatabaseHandler extends SQLiteOpenHelper{
                 name = cursorDB.getString(cursorDB.getColumnIndex("Chore"));
                 desc = cursorDB.getString(cursorDB.getColumnIndex("Description"));
                 res = cursorDB.getString(cursorDB.getColumnIndex("Resources"));
+                resList = res.split(",");
                 grp = cursorDB.getString(cursorDB.getColumnIndex("Group"));
                 reward = cursorDB.getString(cursorDB.getColumnIndex("Reward"));
                 rewardInt = Integer.parseInt(reward);
 
-                newChore = new Chore(name,desc,res,grp,rewardInt);
-                // TODO - res is asking for String[] but is stored as String
+                newChore = new Chore(name,desc,resList,grp,rewardInt);
                 choreList[arrayLocation] = newChore;
                 arrayLocation++;
             }
