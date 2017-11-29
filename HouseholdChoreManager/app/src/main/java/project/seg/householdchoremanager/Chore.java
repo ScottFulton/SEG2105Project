@@ -10,16 +10,18 @@ package project.seg.householdchoremanager;
 public class Chore {
     public String name;
     private String description;
-    private String[] resources;
+    private String resources;
     private String group;
     private int reward;
+    private int duedate;
 
-    public Chore(String nam, String desc, String[] rescource, String grp, int rewrd){
+    public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate){
         name = nam;
         description = desc;
         resources = rescource;
         group = grp;
         reward = rewrd;
+        duedate = dudate;
     }
 
     public Chore(){
@@ -28,6 +30,7 @@ public class Chore {
         resources = null;
         group = null;
         reward = 0;
+        duedate = 0;
     }
 
     public String getName(){
@@ -43,15 +46,15 @@ public class Chore {
     }
 
     public String getResources(){
-        String retString = "";
-        for(String resource : resources){
-            retString += resource + ", ";
-        }
-        return retString;
+        return resources;
     }
 
     public int getReward(){
         return reward;
+    }
+
+    public int getDueDate(){
+        return duedate;
     }
 
     public void setName(String name){
@@ -68,8 +71,7 @@ public class Chore {
 
     //Convert string of format "thing, thing1, thing2" into an array of resources
     public void setResources(String rescs){
-        String[] retString;
-        retString = rescs.split(", ");
+        return;
     }
 
     public void addResource(String resource){
@@ -78,5 +80,9 @@ public class Chore {
 
     public void setReward(int reward){
         this.reward = reward;
+    }
+
+    public void setDuedate(int duedate){
+        this.duedate = duedate;
     }
 }
