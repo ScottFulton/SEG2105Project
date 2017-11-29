@@ -1,4 +1,4 @@
-
+/*
 package project.seg.householdchoremanager;
 
 import android.content.Intent;
@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by Ben on 2017-11-29.
- */
+
 
 public class yourChoresActivity extends AppCompatActivity{
     @Override
@@ -23,18 +23,19 @@ public class yourChoresActivity extends AppCompatActivity{
         setContentView(R.layout.activity_your_chores);
 
         DatabaseHandler db = new DatabaseHandler(this);
+        //User usr = new User();
         Chore[] DBchoreList = db.getAllChores();
         List<Chore> choreList = new ArrayList<>();
+        choreList.add(DBchoreList[1]);
 
         for(Chore c : DBchoreList){
             /*
-            Have to get assignment return first
             try {
-                if(c.getAssign == etc) {
+                if(c.getAssigned().equals(User.getName())) {
 
                 }
             } catch (Exception e) {}
-            */
+
         }
         ListView listView = (ListView) findViewById(R.id.list);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this,choreList);
@@ -42,7 +43,7 @@ public class yourChoresActivity extends AppCompatActivity{
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent editorLaunchInterest = new Intent(getApplicationContext(), ChoreDetailsActivity.class);
                 editorLaunchInterest.putExtra("position",position);
                 editorLaunchInterest.putExtra("name",choreList[position]);
@@ -51,3 +52,4 @@ public class yourChoresActivity extends AppCompatActivity{
         });
     }
 }
+*/

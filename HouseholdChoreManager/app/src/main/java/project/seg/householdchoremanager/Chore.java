@@ -14,14 +14,16 @@ public class Chore {
     private String group;
     private int reward;
     private int duedate;
+    private String assigned;
 
-    public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate){
+    public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate,String assign){
         name = nam;
         description = desc;
         resources = rescource;
         group = grp;
         reward = rewrd;
         duedate = dudate;
+        assigned = assign;
     }
 
     public Chore(){
@@ -31,6 +33,7 @@ public class Chore {
         group = null;
         reward = 0;
         duedate = 0;
+        assigned = null;
     }
 
     public String getName(){
@@ -55,6 +58,10 @@ public class Chore {
 
     public int getDueDate(){
         return duedate;
+    }
+
+    public String getAssigned(){
+        return assigned;
     }
 
     public void setName(String name){
@@ -84,6 +91,10 @@ public class Chore {
 
     public void setDuedate(int duedate){
         this.duedate = duedate;
+    }
+
+    public void setAssigned(String assigned) {
+        this.assigned = assigned;
     }
 
     public String[] getResourcesArray(){

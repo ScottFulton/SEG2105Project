@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String COLUMN_GROUPNAME = "groupname";
     public static final String COLUMN_REWARD = "reward";
     public static final String COLUMN_DUEDATE = "duedate";
+    public static final String COLUMN_ASSIGNED = "assigned";
 
 
 
@@ -33,10 +36,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Creates both tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CHORES_TABLE = "CREATE TABLE " + TABLE_CHORES + "(" + COLUMN_ID
-                + " INTEGER PRIMARY KEY AUTOINCREMENT, "+ COLUMN_CHORENAME +" TEXT, " +
+        String CREATE_CHORES_TABLE = "CREATE TABLE " + TABLE_CHORES + " (" + COLUMN_ID
+                + " INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN_CHORENAME+" TEXT, " +
                 COLUMN_DESCRIPTION + " TEXT, " + COLUMN_RESOURCES + " TEXT, " + COLUMN_GROUPNAME
-                + " TEXT, " + COLUMN_REWARD + " INTEGER, " + COLUMN_DUEDATE + " INTEGER" + ");";
+                + " TEXT, " + COLUMN_REWARD + " INTEGER, " + COLUMN_DUEDATE + " INTEGER, " + COLUMN_ASSIGNED
+                + " TEXT " + ")";
         db.execSQL(CREATE_CHORES_TABLE);
     }
 
@@ -55,7 +59,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_GROUPNAME, chore.getGroup());
         values.put(COLUMN_REWARD, chore.getReward());
         values.put(COLUMN_DUEDATE, chore.getDueDate());
-        db.insertOrThrow(TABLE_CHORES, null, values);
+        values.put(COLUMN_ASSIGNED, chore.getAssigned());
+        db.insert(TABLE_CHORES, null, values);
         db.close();
     }
 
@@ -73,7 +78,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             String grp = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_GROUPNAME));
             int reward = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_REWARD));
             int date = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_DUEDATE));
-            Chore newChore = new Chore(name,desc,res,grp,reward,date);
+            String ass = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_ASSIGNED));
+            Chore newChore = new Chore(name,desc,res,grp,reward,date,ass);
 
             choreList.add(newChore);
 
@@ -84,11 +90,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 grp = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_GROUPNAME));
                 reward = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_REWARD));
                 date = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_DUEDATE));
-                newChore = new Chore(name,desc,res,grp,reward,date);
+                ass = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_ASSIGNED));
+                newChore = new Chore(name,desc,res,grp,reward,date,ass);
                 choreList.add(newChore);
             }
         }
+
         Chore[] newChoreList = choreList.toArray(new Chore[choreList.size()]);
+
         cursorDB.close();
         db.close();
         return newChoreList;
