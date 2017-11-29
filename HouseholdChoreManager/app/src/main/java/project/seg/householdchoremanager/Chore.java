@@ -85,4 +85,8 @@ public class Chore {
     public void setDuedate(int duedate){
         this.duedate = duedate;
     }
+
+    public String[] getResourcesArray(){
+        return resources.split(", ");    //Regex value might have to be changed later
+    }
 }

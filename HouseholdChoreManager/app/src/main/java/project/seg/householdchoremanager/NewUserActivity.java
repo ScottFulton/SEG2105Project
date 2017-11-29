@@ -15,7 +15,7 @@ public class NewUserActivity extends AppCompatActivity {
     }
 
     public void enterOnClick(View view){
-        UserDatabase users = new UserDatabase(this);    //Whaaaaaaat!?
+        UserDatabase users = new UserDatabase(this);
 
         EditText textName = (EditText)findViewById(R.id.name);
         EditText textPassword = (EditText)findViewById(R.id.password);

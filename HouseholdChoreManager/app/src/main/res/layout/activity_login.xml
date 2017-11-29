@@ -45,30 +45,4 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="105dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickCanel"
-        android:text="Cancel"
-        app:layout_constraintLeft_toLeftOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:text="Enter"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="5dp"
-        app:layout_constraintRight_toRightOf="@+id/editText2"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button5"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toRightOf="@+id/button5"
-        android:layout_marginLeft="5dp" />
 </android.support.constraint.ConstraintLayout>
