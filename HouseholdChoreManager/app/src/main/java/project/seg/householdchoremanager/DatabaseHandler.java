@@ -62,8 +62,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Chore[] getAllChores(){
         //created by Chris 2017/11/27
         SQLiteDatabase db = this.getReadableDatabase();
-        Chore[] choreList = new Chore[1000];
-        int arrayLocation = 0;
+        ArrayList<Chore> choreList = new ArrayList<Chore>();
         //cursor is used to parse through the rows of table used with .moveToNext
         Cursor cursorDB = db.rawQuery("SELECT * FROM chores",null);
 
@@ -76,8 +75,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             int date = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_DUEDATE));
             Chore newChore = new Chore(name,desc,res,grp,reward,date);
 
-            choreList[arrayLocation] = newChore;
-            arrayLocation++;
+            choreList.add(newChore);
 
             while(cursorDB.moveToNext()){
                 name = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_CHORENAME));
@@ -87,12 +85,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 reward = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_REWARD));
                 date = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_DUEDATE));
                 newChore = new Chore(name,desc,res,grp,reward,date);
-                choreList[arrayLocation] = newChore;
-                arrayLocation++;
+                choreList.add(newChore);
             }
         }
+        Chore[] newChoreList = choreList.toArray(new Chore[choreList.size()]);
         cursorDB.close();
         db.close();
-        return choreList;
+        return newChoreList;
     }
 }
