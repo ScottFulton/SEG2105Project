@@ -1,4 +1,4 @@
-/*
+
 package project.seg.householdchoremanager;
 
 import android.content.Intent;
@@ -13,9 +13,9 @@ import java.util.List;
 
 /**
  * Created by Ben on 2017-11-29.
+*/
 
-
-public class yourChoresActivity extends AppCompatActivity{
+public class YourChoresActivity extends AppCompatActivity{
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +23,21 @@ public class yourChoresActivity extends AppCompatActivity{
         setContentView(R.layout.activity_your_chores);
 
         DatabaseHandler db = new DatabaseHandler(this);
-        //User usr = new User();
+        UserDatabase udb = new UserDatabase(this);
+
         Chore[] DBchoreList = db.getAllChores();
-        List<Chore> choreList = new ArrayList<>();
-        choreList.add(DBchoreList[1]);
-
+        final Chore[] choreList = new Chore[DBchoreList.length];
+        String s = getIntent().getStringExtra("USERNAME");
+        Session session = new Session(s);
+        String user = session.getUser().getName();
+        int count = 0;
         for(Chore c : DBchoreList){
-            /*
             try {
-                if(c.getAssigned().equals(User.getName())) {
-
+                if(c.getAssigned().equals(user)) {
+                    choreList[count] = c;
+                    count++;
                 }
             } catch (Exception e) {}
-
         }
         ListView listView = (ListView) findViewById(R.id.list);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this,choreList);
@@ -43,13 +45,17 @@ public class yourChoresActivity extends AppCompatActivity{
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+            /*
+            Launches ChoreDetailsActivity when a list item is clicked, also sends important
+            text items like the description via intent
+             */
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent editorLaunchInterest = new Intent(getApplicationContext(), ChoreDetailsActivity.class);
-                editorLaunchInterest.putExtra("position",position);
-                editorLaunchInterest.putExtra("name",choreList[position]);
+                editorLaunchInterest.putExtra("resources", choreList[position].getResourcesArray());
+                editorLaunchInterest.putExtra("name",choreList[position].getName());
+                editorLaunchInterest.putExtra("description", choreList[position].getDescription());
                 startActivityForResult(editorLaunchInterest, 0);
             }
         });
     }
 }
-*/

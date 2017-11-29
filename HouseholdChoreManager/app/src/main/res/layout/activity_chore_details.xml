@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteX="8dp">
         <TextView
             android:id="@+id/choreTitle"
-            android:text="Chore Name"
+            android:text=""
             android:layout_gravity="center_horizontal"
             android:textSize="28sp"
             android:layout_width="wrap_content"
@@ -36,15 +36,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="What you need:"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-                <TextView
                     android:id="@+id/resourceItems"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""/>

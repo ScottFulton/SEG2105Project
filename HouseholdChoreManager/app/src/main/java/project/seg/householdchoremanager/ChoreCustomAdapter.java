@@ -13,11 +13,10 @@ import android.widget.TextView;
  */
 
 public class ChoreCustomAdapter extends ArrayAdapter {
-
     private final Context context;
-    private final String[] myChores;
+    private final Chore[] myChores;
 
-    public ChoreCustomAdapter(Context context, String[] choreList){
+    public ChoreCustomAdapter(Context context, Chore[] choreList) {
         super(context, R.layout.chore_item_layout, choreList);
         this.context = context;
         this.myChores = choreList;
@@ -26,12 +25,15 @@ public class ChoreCustomAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.chore_item_layout, parent, false);
+
         TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemName);
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
         ImageView choreImage = (ImageView) rowView.findViewById(R.id.icon);
-        choreNameTextField.setText(myChores[position]);
-        choreDescriptionTextField.setText("Due: December 6th \nAssigned to: Name");//TODO switch out date and name with database values.
+
+        choreNameTextField.setText(myChores[position].getName());
+        choreDescriptionTextField.setText(myChores[position].getDescription());
+        //choreImage.setImageDrawable();
+
         return rowView;
     }
-
 }
