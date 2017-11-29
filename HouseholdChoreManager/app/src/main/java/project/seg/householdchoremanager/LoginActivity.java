@@ -37,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
             /*
             Access above intent with
             String s = getIntent().getStringExtra("USERNAME");
+
+            Then create:
+            Session session = new Session(s);
+            session.getUser();
              */
         } else {
             textError.setVisibility(View.VISIBLE);

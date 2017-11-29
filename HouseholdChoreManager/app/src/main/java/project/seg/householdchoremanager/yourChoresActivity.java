@@ -1,3 +1,4 @@
+/*
 package project.seg.householdchoremanager;
 
 import android.content.Intent;
@@ -10,7 +11,7 @@ import android.widget.ListView;
 /**
  * Created by Ben on 2017-11-29.
  */
-
+/*
 public class yourChoresActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,3 +35,4 @@ public class yourChoresActivity extends AppCompatActivity{
         });
     }
 }
+*/
