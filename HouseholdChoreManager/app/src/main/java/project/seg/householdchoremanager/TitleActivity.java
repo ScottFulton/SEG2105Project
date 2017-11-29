@@ -20,5 +20,8 @@ public class TitleActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Start up the new user screen
+    public void newUserOnClick(View view){
+        Intent intent = new Intent(getApplicationContext(), NewUserActivity.class);
+        startActivity(intent);
+    }
 }

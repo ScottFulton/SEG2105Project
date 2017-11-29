@@ -61,34 +61,99 @@ public class UserDatabase extends SQLiteOpenHelper{
 
     public void addUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
+        int adult;
+        int points = user.getPoints();
+
+        if(user.isAdult()){
+            adult = 1;
+        } else{
+            adult = 0;
+        }
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_PASSWORDS, user.getPassword());
-        values.put(COLUMN_ISADULT, user.isAdult());
+        values.put(COLUMN_ISADULT, adult);
         values.put(COLUMN_POINTS, user.getPoints());
 
         db.insert(TABLE_USERS, null, values);
+
         db.close(); //Save our changes to the database
     }
 
-    public boolean getUser(String name){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "Select * FROM " +TABLE_USERS+ " WHERE " + COLUMN_NAME + " = \"" + name + "\"";
+    //Will check to see if a user with "name" as their name exists
+    public boolean checkUser(String name){
+        User[] userList = getAllUsers();
 
-
-        Cursor cursor = db.rawQuery(query, null);
-
-        User retUser = new User(null, null, false, 0);
-
-        if(cursor.moveToFirst()){
-            User.setName(cursor.getString(0));
-            User.setPassword(cursor)
+        for(User u : userList){
+            String tName = u.getName();
+            if(tName.equals(name)){
+                return true;
+            }
         }
 
+        return false;
     }
 
-    public boolean awardPoints(String user, int points){
-        SQLiteDatabase db = this.getWritableDatabase();
+    public String nameUser(){
+        User[] userList = getAllUsers();
+        return userList[0].getName();
+    }
+
+
+
+
+
+    public User[] getAllUsers(){
+        //created by Chris 2017/11/27
+        SQLiteDatabase db = this.getReadableDatabase();
+        User[] userList = new User[1000];
+        int arrayLocation = 0;
+
+        //cursor is used to parse through the rows of table used with .moveToNext
+        String[] columns = {this.COLUMN_NAME, this.COLUMN_PASSWORDS,this.COLUMN_POINTS,this.COLUMN_ISADULT};
+        Cursor cursorDB = db.rawQuery("SELECT * FROM UserInformation",null);
+
+        if(cursorDB.moveToFirst()){
+            String name = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_NAME));
+            String pass = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_PASSWORDS));
+            int points = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_POINTS));
+            int adult = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_ISADULT));
+
+            boolean bAdult = false;
+            if(adult==0){
+                bAdult = true;
+            } else{
+                bAdult = false;
+            }
+
+            User newUser = new User(name,pass,bAdult,points);
+
+            userList[arrayLocation] = newUser;
+            arrayLocation++;
+
+            while(cursorDB.moveToNext()){
+                name = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_NAME));
+                pass = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_PASSWORDS));
+                points = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_POINTS));
+                adult = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_ISADULT));
+
+                if(adult==0){
+                    bAdult = true;
+                } else{
+                    bAdult = false;
+                }
+
+                newUser = new User(name,pass,bAdult,points);
+                userList[arrayLocation] = newUser;
+                arrayLocation++;
+            }
+        }
+        User newUser = new User("a","a",false,0);
+
+        userList[arrayLocation] = newUser;
+        cursorDB.close();
+        db.close();
+        return userList;
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
+import android.content.Intent;
 
 public class NewUserActivity extends AppCompatActivity {
 
@@ -22,23 +23,29 @@ public class NewUserActivity extends AppCompatActivity {
         EditText textConfirm = (EditText)findViewById(R.id.confirmPassword);
         TextView textError = (TextView)findViewById(R.id.confirmError);
 
-        String name = textName.toString();
-        String password = textPassword.toString();
-        String confirm = textConfirm.toString();
+        String name = textName.getText().toString();
+        String password = textPassword.getText().toString();
+        String confirm = textConfirm.getText().toString();
 
-        if(!confirm.equals(password)){
+        //User retUser = new User(name, password, true, 0);
+        //users.addUser(retUser);
+
+        //User[] testUsers = users.getAllUsers();
+
+
+        //if(users.checkUser(name)){
             textError.setVisibility(View.VISIBLE);
-            return;
-        } else {
-            if(){
-                //If the username already exists, no
-            } else {
-                User newUser = new User(name, password, true, 0);
-                users.addUser(newUser);
+            textError.setText(name);
+        //} else {
 
-            }
-        }
+        //}
 
+
+
+        //Intent returnIntent = new Intent();
+        //setResult(RESULT_OK, returnIntent);
+        //finish();
     }
 
 }
+
