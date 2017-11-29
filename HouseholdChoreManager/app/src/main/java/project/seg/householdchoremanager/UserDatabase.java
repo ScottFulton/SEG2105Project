@@ -18,11 +18,7 @@ import android.database.Cursor;
 
 
 
-    /*Likely future operations:
-        - Read ALL chore values from table for information (implemented)
-        - Compare user login info to tables (working on it)
-        - Probably more
-    */
+
 
 public class UserDatabase extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
@@ -73,8 +69,9 @@ public class UserDatabase extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_PASSWORDS, user.getPassword());
-        values.put(COLUMN_ISADULT, adult);
         values.put(COLUMN_POINTS, user.getPoints());
+        values.put(COLUMN_ISADULT, adult);
+
 
         db.insert(TABLE_USERS, null, values);
 
@@ -85,19 +82,60 @@ public class UserDatabase extends SQLiteOpenHelper{
     public boolean checkUser(String name){
         User[] userList = getAllUsers();
 
-        for(User u : userList){
-            String tName = u.getName();
-            if(tName.equals(name)){
-                return true;
+        /*
+        I'm aware that this code is a crime against software engineering,
+        but it also works, and that is good enough for me at this point
+         */
+        try{
+            for(User u : userList) {
+                String tName = u.getName();
+                if (tName.equals(name)) {
+                    return true;
+                }
             }
+        } catch (Exception E){
+            return false;
         }
 
         return false;
     }
 
-    public String nameUser(){
+    public Boolean authUser(String name, String pass){
         User[] userList = getAllUsers();
-        return userList[0].getName();
+
+        /*
+        It's pretty much the method above but not
+         */
+        try{
+            for(User u : userList) {
+                String tName = u.getName();
+                String tPass = u.getPassword();
+                if (tName.equals(name) && tPass.equals(pass)) {
+                    return true;
+                }
+            }
+        } catch (Exception E){
+            return false;
+        }
+
+        return false;
+    }
+
+    public User getUserByName(String name){
+        User[] userList = getAllUsers();
+
+        try{
+            for(User u : userList) {
+                String tName = u.getName();
+                if (tName.equals(name)) {
+                    return u;
+                }
+            }
+        } catch (Exception E){
+            return null;
+        }
+
+        return null;
     }
 
 
@@ -105,7 +143,8 @@ public class UserDatabase extends SQLiteOpenHelper{
 
 
     public User[] getAllUsers(){
-        //created by Chris 2017/11/27
+        //Chris made this for DatabaseHandler, I just copied the relevant bits to be used in
+        //a user database -Kevin
         SQLiteDatabase db = this.getReadableDatabase();
         User[] userList = new User[1000];
         int arrayLocation = 0;

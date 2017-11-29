@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
+import android.widget.ToggleButton;
 
 public class NewUserActivity extends AppCompatActivity {
 
@@ -22,29 +23,32 @@ public class NewUserActivity extends AppCompatActivity {
         EditText textPassword = (EditText)findViewById(R.id.password);
         EditText textConfirm = (EditText)findViewById(R.id.confirmPassword);
         TextView textError = (TextView)findViewById(R.id.confirmError);
+        ToggleButton isAdult  = (ToggleButton)findViewById(R.id.isAdult);
 
         String name = textName.getText().toString();
         String password = textPassword.getText().toString();
         String confirm = textConfirm.getText().toString();
 
-        //User retUser = new User(name, password, true, 0);
-        //users.addUser(retUser);
+        textError.setVisibility(View.VISIBLE);
 
-        //User[] testUsers = users.getAllUsers();
+        if(!confirm.equals(password)){
+            displayError(textError, "Both password entries must be the same");
+        } else {
+            boolean taken = users.checkUser(name);
+            if(taken){
+                displayError(textError, "That username is already taken");
+            } else {
+                User retUser = new User(name, password, isAdult.isChecked(), 0);
+                users.addUser(retUser);
+                Intent returnIntent = new Intent();
+                setResult(RESULT_OK, returnIntent);
+                finish();
+            }
+        }
+    }
 
-
-        //if(users.checkUser(name)){
-            textError.setVisibility(View.VISIBLE);
-            textError.setText(name);
-        //} else {
-
-        //}
-
-
-
-        //Intent returnIntent = new Intent();
-        //setResult(RESULT_OK, returnIntent);
-        //finish();
+    public void displayError(TextView textError, String error){
+        textError.setText(error);
     }
 
 }

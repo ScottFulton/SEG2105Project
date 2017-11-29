@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context="project.seg.householdchoremanager.NewUserActivity">
 
+    <ToggleButton
+        android:id="@+id/isAdult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="isAdult"
+        android:textOff="Child"
+        android:textOn="Adult"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmError"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
     <TextView
         android:id="@+id/confirmError"
         android:layout_width="178dp"
