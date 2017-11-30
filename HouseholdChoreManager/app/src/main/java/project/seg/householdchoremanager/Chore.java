@@ -26,6 +26,16 @@ public class Chore {
         assigned = assign;
     }
 
+    public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate){
+        name = nam;
+        description = desc;
+        resources = rescource;
+        group = grp;
+        reward = rewrd;
+        duedate = dudate;
+        assigned = null;
+    }
+
     public Chore(){
         name = null;
         description = null;
