@@ -8,11 +8,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
+import android.widget.ToggleButton;
 
 
 public class CreateUser extends AppCompatActivity {
-    RadioButton parentAccount;
+    ToggleButton parentAccount;
     EditText username;
     EditText password;
     EditText birthday;
@@ -23,7 +23,7 @@ public class CreateUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
-        parentAccount = (RadioButton) findViewById(R.id.parentButton);
+        parentAccount = (ToggleButton) findViewById(R.id.parentButton);
         username = (EditText) findViewById(R.id.nameText);
         password = (EditText) findViewById(R.id.passwordText);
         birthday = (EditText) findViewById(R.id.birthdayText);
@@ -41,6 +41,12 @@ public class CreateUser extends AppCompatActivity {
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
         finish();
+    }
+
+    public void OnSetAvatarButton(View view) {
+//Application Context and Activity
+        Intent intent = new Intent(getApplicationContext(), SelectIcon.class);
+        startActivityForResult (intent,0);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -67,7 +67,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Enter Password:"
-            android:inputType="number" />
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/birthdayText"
@@ -79,13 +79,14 @@
             android:inputType="date"
             android:singleLine="false" />
 
-        <RadioButton
+        <ToggleButton
             android:id="@+id/parentButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.01"
-            android:checked="false"
-            android:text="Parent Account?" />
+            android:text="Parent"
+            android:textOff="Child"
+            android:textOn="Parent On" />
 
         <LinearLayout
             android:layout_width="match_parent"

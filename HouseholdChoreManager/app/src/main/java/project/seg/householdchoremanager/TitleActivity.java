@@ -21,7 +21,7 @@ public class TitleActivity extends AppCompatActivity {
     }
 
     public void newUserOnClick(View view){
-        Intent intent = new Intent(getApplicationContext(), NewUserActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CreateUser.class);
         startActivity(intent);
     }
 }
