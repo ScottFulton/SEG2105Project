@@ -30,7 +30,8 @@ public class UserDatabase extends SQLiteOpenHelper{
     public static final String COLUMN_PASSWORDS = "Passwords";  //This is a joke security wise
     public static final String COLUMN_POINTS = "Points";    //Points accumulated by user
     public static final String COLUMN_ISADULT = "isAdult";    //Boolean if user is parent or not
-
+    public static final String COLUMN_ICON = "icon";
+    
     public UserDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -42,7 +43,7 @@ public class UserDatabase extends SQLiteOpenHelper{
         //Create the table for users
         String CREATE_TABLE = "CREATE TABLE " + TABLE_USERS + "(" + COLUMN_NAME +
                 " TEXT PRIMARY KEY," + COLUMN_PASSWORDS + " TEXT," + COLUMN_POINTS + " INTEGER," +
-                COLUMN_ISADULT + " INTEGER)";
+                COLUMN_ISADULT + " INTEGER " + COLUMN_ICON + " TEXT)";
         db.execSQL(CREATE_TABLE);
 
 
@@ -66,12 +67,12 @@ public class UserDatabase extends SQLiteOpenHelper{
             adult = 0;
         }
 
-        //Load each value into the database after retrieving it
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_PASSWORDS, user.getPassword());
         values.put(COLUMN_POINTS, user.getPoints());
         values.put(COLUMN_ISADULT, adult);
+        values.put(COLUMN_ICON, user.getDrawableIcon());
 
 
         db.insert(TABLE_USERS, null, values);
@@ -149,8 +150,7 @@ public class UserDatabase extends SQLiteOpenHelper{
         //Chris made this for DatabaseHandler, I just copied the relevant bits to be used in
         //a user database -Kevin
         SQLiteDatabase db = this.getReadableDatabase();
-        User[] userList = new User[1000];
-        int arrayLocation = 0;
+        ArrayList<User> userList = new ArrayList<User>();
 
         //cursor is used to parse through the rows of table used with .moveToNext
         String[] columns = {this.COLUMN_NAME, this.COLUMN_PASSWORDS,this.COLUMN_POINTS,this.COLUMN_ISADULT};
@@ -161,6 +161,7 @@ public class UserDatabase extends SQLiteOpenHelper{
             String pass = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_PASSWORDS));
             int points = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_POINTS));
             int adult = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_ISADULT));
+            String drawableIcon = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_ICON));
 
             boolean bAdult = false;
             if(adult==0){
@@ -169,16 +170,16 @@ public class UserDatabase extends SQLiteOpenHelper{
                 bAdult = false;
             }
 
-            User newUser = new User(name,pass,bAdult,points);
+            User newUser = new User(name,pass,bAdult,points,drawableIcon);
 
-            userList[arrayLocation] = newUser;
-            arrayLocation++;
+            userList.add(newUser);
 
             while(cursorDB.moveToNext()){
                 name = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_NAME));
                 pass = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_PASSWORDS));
                 points = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_POINTS));
                 adult = cursorDB.getInt(cursorDB.getColumnIndex(this.COLUMN_ISADULT));
+                drawableIcon = cursorDB.getString(cursorDB.getColumnIndex(this.COLUMN_ICON));
 
                 if(adult==0){
                     bAdult = true;
@@ -186,17 +187,14 @@ public class UserDatabase extends SQLiteOpenHelper{
                     bAdult = false;
                 }
 
-                newUser = new User(name,pass,bAdult,points);
-                userList[arrayLocation] = newUser;
-                arrayLocation++;
+                newUser = new User(name,pass,bAdult,points,drawableIcon);
+                userList.add(newUser);
             }
         }
-        User newUser = new User("a","a",false,0);
-
-        userList[arrayLocation] = newUser;
+        User[] newUserList = userList.toArray(new User[userList.size()]);
         cursorDB.close();
         db.close();
-        return userList;
+        return newUserList;
     }
 
     /*
