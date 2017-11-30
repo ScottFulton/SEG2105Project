@@ -36,6 +36,7 @@
         <activity android:name=".LoginActivity" />
         <!-- <activity android:name=".LoginActivity"></activity> -->
         <activity android:name=".NewUserActivity"></activity>
+<<<<<<< HEAD
         <activity android:name=".CreateUser"></activity>
         <activity android:name=".ChoreDetailsActivity"></activity>
         <activity android:name=".EditChore"></activity>
@@ -45,6 +46,9 @@
         <activity android:name=".YourChoresActivity"></activity>
 
 
+=======
+        <activty android:name=".CreateUser"></activty>
+>>>>>>> 93f2fba5b2cf788de07fa8fca20e711e2300732f
     </application>
 
 </manifest>
