@@ -50,7 +50,8 @@ public class YourChoresActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View v) {
-                //manage chores not implemented yet
+                Intent managerLaunchInterest = new Intent(getApplicationContext(), ManageChores.class);
+                startActivityForResult(managerLaunchInterest, 0);
             }
         });
 
