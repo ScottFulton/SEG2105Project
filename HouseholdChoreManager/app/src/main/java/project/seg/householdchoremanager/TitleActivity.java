@@ -17,7 +17,7 @@ public class TitleActivity extends AppCompatActivity {
     //Start up the login screen "activity_login"
     public void userOnClick(View view){
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
 
     public void newUserOnClick(View view){

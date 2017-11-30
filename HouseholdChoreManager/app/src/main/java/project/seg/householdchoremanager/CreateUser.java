@@ -32,6 +32,7 @@ public class CreateUser extends AppCompatActivity {
         dbHandler = new UserDatabase(this);
     }
 
+
     public void newUser (View view) {
 
         User user = new User(username.getText().toString(), password.getText().toString(),  parentAccount.isChecked(), Integer.parseInt(birthday.getText().toString()), iconImg.getDrawable().toString());

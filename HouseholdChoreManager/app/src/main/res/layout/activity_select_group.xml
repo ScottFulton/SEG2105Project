@@ -149,7 +149,7 @@
                 android:layout_row="0"
                 android:layout_rowSpan="1"
                 android:onClick="SetChoreIcon"
-                app:srcCompat="@drawable/outside" />
+                app:srcCompat="@drawable/outdoor" />
         </GridLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
