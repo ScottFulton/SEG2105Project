@@ -3,7 +3,7 @@ package project.seg.householdchoremanager;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by vinny on 29/11/17.
+ * Created by Kevin on 29/11/17.
  */
 
 public class Session extends AppCompatActivity{

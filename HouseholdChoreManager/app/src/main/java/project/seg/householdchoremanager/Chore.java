@@ -26,6 +26,16 @@ public class Chore {
         assigned = assign;
     }
 
+    public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate){
+        name = nam;
+        description = desc;
+        resources = rescource;
+        group = grp;
+        reward = rewrd;
+        duedate = dudate;
+        assigned = "";      //Opted for value of "" rather than null, to avoid NullPointerException
+    }
+
     public Chore(){
         name = null;
         description = null;
@@ -79,10 +89,6 @@ public class Chore {
     //Convert string of format "thing, thing1, thing2" into an array of resources
     public void setResources(String rescs){
         return;
-    }
-
-    public void addResource(String resource){
-
     }
 
     public void setReward(int reward){

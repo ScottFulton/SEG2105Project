@@ -48,7 +48,7 @@ public class UserDatabase extends SQLiteOpenHelper{
 
     }
 
-    //Overridden onUpgrade(). Updates the database, again for both chores.
+    //Overridden onUpgrade(). Updates the database tables.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
@@ -66,6 +66,7 @@ public class UserDatabase extends SQLiteOpenHelper{
             adult = 0;
         }
 
+        //Load each value into the database after retrieving it
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_PASSWORDS, user.getPassword());
@@ -77,6 +78,8 @@ public class UserDatabase extends SQLiteOpenHelper{
 
         db.close(); //Save our changes to the database
     }
+
+
 
     //Will check to see if a user with "name" as their name exists
     public boolean checkUser(String name){
@@ -100,6 +103,7 @@ public class UserDatabase extends SQLiteOpenHelper{
         return false;
     }
 
+    //Authenticates a user given the login and password information
     public Boolean authUser(String name, String pass){
         User[] userList = getAllUsers();
 
@@ -121,6 +125,7 @@ public class UserDatabase extends SQLiteOpenHelper{
         return false;
     }
 
+    //Returns a USER type object
     public User getUserByName(String name){
         User[] userList = getAllUsers();
 
@@ -137,8 +142,6 @@ public class UserDatabase extends SQLiteOpenHelper{
 
         return null;
     }
-
-
 
 
 
@@ -195,4 +198,34 @@ public class UserDatabase extends SQLiteOpenHelper{
         db.close();
         return userList;
     }
+
+    /*
+    public boolean deleteChore(String chorename){
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \"" + chorename + "\"";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            db.delete(TABLE_CHORES, COLUMN_ID + " = " + idStr, null);
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
+
+    public boolean deleteUser(String name){
+
+    }
+
+    public boolean givePoints(String name, int points){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \""+name+"\"";
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+
+        }
+    }
+    */
 }

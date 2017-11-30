@@ -116,4 +116,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return result;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> baa255adb9e2f589a7b178d7c8a97eeb1e77dcbb
