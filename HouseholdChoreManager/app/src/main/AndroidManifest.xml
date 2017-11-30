@@ -43,9 +43,9 @@
         <activity android:name=".SelectGroup"></activity>
         <activity android:name=".SelectIcon"></activity>
         <activity android:name=".YourChoresActivity"></activity>
+        <activity android:name=".AssignChore"></activity>
 
 
-        <activty android:name=".CreateUser"></activty>
 
     </application>
 

@@ -1,8 +1,4 @@
 package project.seg.householdchoremanager;
-
-
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +14,16 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
     private final Chore[] myChores;
     private BtnClickListener mClickListener = null;
     private BtnClickListener mClickListener2 = null;
+    private BtnClickListener mClickListener3 = null;
 
 
-    public ChoreCustomAdapter3(Context context, Chore[] choreList, BtnClickListener listener, BtnClickListener listener2) {
+    public ChoreCustomAdapter3(Context context, Chore[] choreList, BtnClickListener listener, BtnClickListener listener2, BtnClickListener listener3) {
         super(context, R.layout.chore_item_layout2, choreList);
         this.context = context;
         this.myChores = choreList;
         this.mClickListener = listener;
         this.mClickListener2 = listener2;
+        this.mClickListener3 = listener3;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -65,6 +63,18 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
                 // TODO Auto-generated method stub
                 if(mClickListener2 != null)
                     mClickListener2.onBtnClick((Integer) v.getTag());
+            }
+        });
+
+        Button assignToButton = (Button) rowView.findViewById(R.id.assignmentBtn);
+        assignToButton.setTag(position); //For passing the list item index
+        assignToButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if(mClickListener3 != null)
+                    mClickListener3.onBtnClick((Integer) v.getTag());
             }
         });
         return rowView;

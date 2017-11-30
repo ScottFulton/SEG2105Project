@@ -44,6 +44,18 @@ public class ManageChores extends AppCompatActivity {
                 dbHandler.deleteChore(choreList[position].getName());
             }
 
+        }, new BtnClickListener() {
+
+            @Override
+            public void onBtnClick(int position) {
+                // TODO Auto-generated method stub
+                // Call your function which creates and shows the dialog here
+                Intent editorLaunchInterest = new Intent(getApplicationContext(), AssignChore.class);
+                startActivityForResult(editorLaunchInterest, 0);
+                Intent intent = getIntent();
+                choreList[position].setAssigned(intent.getStringExtra("name"));
+            }
+
         });
         listView.setAdapter(adapter);
     }
