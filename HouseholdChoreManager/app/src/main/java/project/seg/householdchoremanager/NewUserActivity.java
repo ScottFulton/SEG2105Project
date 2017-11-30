@@ -16,6 +16,7 @@ public class NewUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user);
     }
 
+    /*
     public void enterOnClick(View view){
         UserDatabase users = new UserDatabase(this);
 
@@ -51,5 +52,6 @@ public class NewUserActivity extends AppCompatActivity {
         textError.setText(error);
     }
 
+*/
 }
 
