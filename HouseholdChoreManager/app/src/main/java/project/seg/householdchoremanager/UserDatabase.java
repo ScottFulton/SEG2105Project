@@ -46,7 +46,7 @@ public class UserDatabase extends SQLiteOpenHelper{
         //Create the table for users
         String CREATE_TABLE = "CREATE TABLE " + TABLE_USERS + "(" + COLUMN_NAME +
                 " TEXT PRIMARY KEY," + COLUMN_PASSWORDS + " TEXT," + COLUMN_POINTS + " INTEGER," +
-                COLUMN_ISADULT + " INTEGER " + COLUMN_ICON + " TEXT)";
+                COLUMN_ISADULT + " INTEGER, " + COLUMN_ICON + " TEXT)";
         db.execSQL(CREATE_TABLE);
 
 

@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         String name = textName.getText().toString();
         String password = textPassword.getText().toString();
 
+
         if(users.authUser(name, password)){
             //Intent intent = new Intent(getApplicationContext(), ChoreGroups.class);
             //startActivity(intent);
@@ -42,9 +43,13 @@ public class LoginActivity extends AppCompatActivity {
             Session session = new Session(s);
             session.getUser();
              */
-        } else {
+        } else if(users.checkUser(name)){
+            textError.setText("Incorrect password");
             textError.setVisibility(View.VISIBLE);
+        }
+        else {
             textError.setText("Unrecognized user");
+            textError.setVisibility(View.VISIBLE);
         }
 
 
