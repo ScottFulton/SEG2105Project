@@ -78,13 +78,27 @@ public class EditChore extends AppCompatActivity {
 
     public void newChore (View view) {
 
-        Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
-                , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
-        dbHandler.addChore(chore);
+        if(!allFieldsFilled(view)) {
+            groupView.setText("Please make all fields valid entries");
+        } else if(dateBox.getText().toString().length() != 8){
+            groupView.setText("Please enter an 8 due date");
+        } else {
+            Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
+                    , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
+            dbHandler.addChore(chore);
 
-        Intent returnIntent = new Intent();
-        setResult(RESULT_OK, returnIntent);
-        finish();
+            Intent returnIntent = new Intent();
+            setResult(RESULT_OK, returnIntent);
+            finish();
+        }
+    }
+
+    //returns true if every field in the activity has a valid entry
+    //Avert your eyes if you don't like ugly return statements.
+    private boolean allFieldsFilled(View view){
+        return !(nameBox.getText().toString().equals("") || pointsBox.getText().toString().equals("")||
+                dateBox.getText().toString().equals("") || resourcesBox.getText().toString().equals("")
+                || descriptionBox.getText().toString().equals(""));
     }
 
     public void OnSetAvatarButton(View view) {
