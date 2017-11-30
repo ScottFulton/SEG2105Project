@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.uottawa.scottfulton.choremanager.R;
+
 
 
 public class ChoreCustomAdapter3 extends ArrayAdapter {
