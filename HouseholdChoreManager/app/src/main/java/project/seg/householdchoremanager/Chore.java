@@ -33,7 +33,7 @@ public class Chore {
         group = grp;
         reward = rewrd;
         duedate = dudate;
-        assigned = null;
+        assigned = "";      //Opted for value of "" rather than null, to avoid NullPointerException
     }
 
     public Chore(){
