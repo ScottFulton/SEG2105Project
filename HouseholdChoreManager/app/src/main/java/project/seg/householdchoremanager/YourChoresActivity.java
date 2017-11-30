@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +29,31 @@ public class YourChoresActivity extends AppCompatActivity{
 
         Chore[] DBchoreList = db.getAllChores();
         final Chore[] choreList = new Chore[DBchoreList.length];
+
+        //fetching relevant user info
         String s = getIntent().getStringExtra("USERNAME");
         Session session = new Session(s);
         String user = session.getUser().getName();
+        Boolean isParent = session.getUser().isAdult();
+
+
+        final Button manageChores = (Button)findViewById(R.id.manageChoresButton);
+        if(!isParent) {
+            /*
+            * if the current user isn't a parent, the manage chores button is removed from the chore
+            * view.
+            */
+            manageChores.setVisibility(View.GONE);
+        }
+
+        manageChores.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //manage chores not implemented yet
+            }
+        });
+
         int count = 0;
         for(Chore c : DBchoreList){
             try {
@@ -39,6 +63,7 @@ public class YourChoresActivity extends AppCompatActivity{
                 }
             } catch (Exception e) {}
         }
+
         ListView listView = (ListView) findViewById(R.id.list);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this,choreList);
         listView.setAdapter(adapter);
@@ -51,6 +76,7 @@ public class YourChoresActivity extends AppCompatActivity{
              */
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent editorLaunchInterest = new Intent(getApplicationContext(), ChoreDetailsActivity.class);
+                editorLaunchInterest.putExtra("group", choreList[position].getGroup());
                 editorLaunchInterest.putExtra("resources", choreList[position].getResourcesArray());
                 editorLaunchInterest.putExtra("name",choreList[position].getName());
                 editorLaunchInterest.putExtra("description", choreList[position].getDescription());
