@@ -36,8 +36,10 @@ public class CreateUser extends AppCompatActivity {
 
 
     public void newUser (View view) {
-        if(dbHandler.checkUser(username.getText().toString())){
+        if(dbHandler.checkUser(username.getText().toString())) {
             textError.setText("Username is already taken");
+        } else if(!allFieldsFilled(view)) {
+            textError.setText("Please make sure all entries valid");
         } else {
             User user = new User(username.getText().toString(), password.getText().toString(), parentAccount.isChecked(), 0, iconImg.getDrawable().toString());
             dbHandler.addUser(user);
@@ -46,6 +48,13 @@ public class CreateUser extends AppCompatActivity {
             setResult(RESULT_OK, returnIntent);
             finish();
         }
+    }
+
+    //Identical to editChore activity's implementation, will return false if all the
+    //form fields are not filled
+    private boolean allFieldsFilled(View view){
+        return !(username.getText().toString().equals("") || password.getText().toString().equals("")
+            || birthday.getText().toString().equals(""));
     }
 
     public void OnSetAvatarButton(View view) {
@@ -94,4 +103,6 @@ public class CreateUser extends AppCompatActivity {
         setResult(RESULT_CANCELED, returnIntent);
         finish();
     }
+
+
 }
