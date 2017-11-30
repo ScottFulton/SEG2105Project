@@ -73,9 +73,14 @@ public class ManageChores extends AppCompatActivity {
         if(resultCode== RESULT_CANCELED) return;
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
-            newChoreList[counter].setAssigned(data.getStringExtra("name"));
-            dbHandler.deleteChore(newChoreList[counter].getName());
-            dbHandler.addChore(newChoreList[counter]);
+            try {
+                newChoreList[counter].setAssigned(data.getStringExtra("name"));
+                dbHandler.deleteChore(newChoreList[counter].getName());
+                dbHandler.addChore(newChoreList[counter]);
+            }
+            catch (Exception e){
+                System.out.println("");
+            }
             Intent refresh = new Intent(this, ManageChores.class);
             startActivity(refresh);
             this.finish();
