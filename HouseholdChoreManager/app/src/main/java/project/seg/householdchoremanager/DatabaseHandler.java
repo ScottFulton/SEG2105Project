@@ -102,4 +102,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return newChoreList;
     }
+    public boolean deleteChore(String chorename){
+        boolean result = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \"" + chorename + "\"";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()){
+            String idStr = cursor.getString(0);
+            db.delete(TABLE_CHORES, COLUMN_ID + " = " + idStr, null);
+            cursor.close();
+            result = true;
+        }
+        db.close();
+        return result;
+    }
 }

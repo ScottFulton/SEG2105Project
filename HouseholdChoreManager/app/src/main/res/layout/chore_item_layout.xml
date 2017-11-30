@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/groupIcon"
         android:layout_width="75dp"
         android:layout_height="75dp"
         app:srcCompat="@android:drawable/star_big_off" />
