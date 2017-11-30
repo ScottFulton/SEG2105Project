@@ -16,6 +16,7 @@ public class CreateUser extends AppCompatActivity {
     EditText username;
     EditText password;
     EditText birthday;
+    TextView textError;
     UserDatabase dbHandler;
 
     ImageView iconImg;
@@ -27,6 +28,7 @@ public class CreateUser extends AppCompatActivity {
         username = (EditText) findViewById(R.id.nameText);
         password = (EditText) findViewById(R.id.passwordText);
         birthday = (EditText) findViewById(R.id.birthdayText);
+        textError = (TextView) findViewById(R.id.iconTxt);
 
         iconImg = (ImageView) findViewById(R.id.groupImg);
         dbHandler = new UserDatabase(this);
@@ -34,13 +36,16 @@ public class CreateUser extends AppCompatActivity {
 
 
     public void newUser (View view) {
+        if(dbHandler.checkUser(username.getText().toString())){
+            textError.setText("Username is already taken");
+        } else {
+            User user = new User(username.getText().toString(), password.getText().toString(), parentAccount.isChecked(), 0, iconImg.getDrawable().toString());
+            dbHandler.addUser(user);
 
-        User user = new User(username.getText().toString(), password.getText().toString(),  parentAccount.isChecked(), Integer.parseInt(birthday.getText().toString()), iconImg.getDrawable().toString());
-        dbHandler.addUser(user);
-
-        Intent returnIntent = new Intent();
-        setResult(RESULT_OK, returnIntent);
-        finish();
+            Intent returnIntent = new Intent();
+            setResult(RESULT_OK, returnIntent);
+            finish();
+        }
     }
 
     public void OnSetAvatarButton(View view) {
