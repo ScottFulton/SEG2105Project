@@ -15,6 +15,7 @@ public class Chore {
     private int reward;
     private int duedate;
     private String assigned;
+    private boolean isCompleted;
 
     public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate,String assign){
         name = nam;
@@ -24,8 +25,10 @@ public class Chore {
         reward = rewrd;
         duedate = dudate;
         assigned = assign;
+        isCompleted  = false;
     }
 
+    //Chore constructor for backwards compatability before String assign and boolean assignedTo became a thing
     public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate){
         name = nam;
         description = desc;
@@ -34,7 +37,10 @@ public class Chore {
         reward = rewrd;
         duedate = dudate;
         assigned = "";      //Opted for value of "" rather than null, to avoid NullPointerException
+        isCompleted = false;
     }
+
+
 
     public Chore(){
         name = null;
@@ -74,6 +80,8 @@ public class Chore {
         return assigned;
     }
 
+    public boolean getIsCompleted() { return isCompleted; }
+
     public void setName(String name){
         this.name = name;
     }
@@ -101,6 +109,10 @@ public class Chore {
 
     public void setAssigned(String assigned) {
         this.assigned = assigned;
+    }
+
+    public void complete(){
+        isCompleted = true;
     }
 
     public String[] getResourcesArray(){

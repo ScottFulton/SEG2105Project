@@ -265,4 +265,11 @@ public class ChoreGroups extends AppCompatActivity {
 
 
     }
+
+    //Debug method to bring us to the manageChores activity.
+    //Should be removed when we've implemented ChoreView
+    public void manageChoresOnClick(View view){
+        Intent newIntent = new Intent(getApplicationContext(), ManageChores.class);
+        startActivity(newIntent);
+    }
 }
