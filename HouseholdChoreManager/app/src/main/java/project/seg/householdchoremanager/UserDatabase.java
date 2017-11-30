@@ -200,26 +200,32 @@ public class UserDatabase extends SQLiteOpenHelper{
         return newUserList;
     }
 
-    /*
-    public boolean deleteChore(String chorename){
-        boolean result = false;
+
+    //Not even sure if this works
+    public void deleteUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \"" + chorename + "\"";
+        String query = "Select * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \"" + name + "\"";
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor.moveToFirst()){
+        if(cursor.moveToFirst()){
             String idStr = cursor.getString(0);
-            db.delete(TABLE_CHORES, COLUMN_ID + " = " + idStr, null);
+            db.delete(TABLE_USERS, COLUMN_NAME + " = " + idStr, null);
             cursor.close();
-            result = true;
         }
         db.close();
-        return result;
     }
 
-    public boolean deleteUser(String name){
-
+    /*
+    public void giveUserPoints(String name, int points){
+        //1) Copy the user's info
+        //2) Delete them
+        //3) Append points to temp user
+        //4) Load database with temp user
     }
+    */
 
+
+
+    /*
     public boolean givePoints(String name, int points){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \""+name+"\"";

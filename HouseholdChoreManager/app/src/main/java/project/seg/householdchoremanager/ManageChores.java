@@ -3,10 +3,13 @@ package project.seg.householdchoremanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 public class ManageChores extends AppCompatActivity {
+    int counter;
+    Chore[] newChoreList;
 
     DatabaseHandler dbHandler;
     @Override
@@ -15,6 +18,7 @@ public class ManageChores extends AppCompatActivity {
         setContentView(R.layout.activity_manage_chores);
         dbHandler = new DatabaseHandler(this);
         final Chore[] choreList = dbHandler.getAllChores();
+        newChoreList = choreList;
         ListView listView = (ListView) findViewById(R.id.list);
         ChoreCustomAdapter3 adapter = new ChoreCustomAdapter3(this, choreList,  new BtnClickListener() {
 
@@ -52,10 +56,9 @@ public class ManageChores extends AppCompatActivity {
                 // Call your function which creates and shows the dialog here
                 Intent editorLaunchInterest = new Intent(getApplicationContext(), AssignChore.class);
                 startActivityForResult(editorLaunchInterest, 0);
-                Intent intent = getIntent();
-                choreList[position].setAssigned(intent.getStringExtra("name"));
-            }
+                counter = position;
 
+            }
         });
         listView.setAdapter(adapter);
     }
@@ -70,9 +73,18 @@ public class ManageChores extends AppCompatActivity {
         if(resultCode== RESULT_CANCELED) return;
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
+            try {
+                newChoreList[counter].setAssigned(data.getStringExtra("name"));
+                dbHandler.deleteChore(newChoreList[counter].getName());
+                dbHandler.addChore(newChoreList[counter]);
+            }
+            catch (Exception e){
+                System.out.println("");
+            }
             Intent refresh = new Intent(this, ManageChores.class);
             startActivity(refresh);
             this.finish();
+
         }
     }
     public void refresh(){
