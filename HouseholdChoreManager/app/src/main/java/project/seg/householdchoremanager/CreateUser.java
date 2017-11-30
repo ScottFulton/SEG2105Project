@@ -18,6 +18,7 @@ public class CreateUser extends AppCompatActivity {
     EditText birthday;
     TextView textError;
     UserDatabase dbHandler;
+    String drawableName;
 
     ImageView iconImg;
     @Override
@@ -39,12 +40,13 @@ public class CreateUser extends AppCompatActivity {
         if(dbHandler.checkUser(username.getText().toString())){
             textError.setText("Username is already taken");
         } else {
-            User user = new User(username.getText().toString(), password.getText().toString(), parentAccount.isChecked(), 0, iconImg.getDrawable().toString());
+            User user = new User(username.getText().toString(), password.getText().toString(), parentAccount.isChecked(), 0, drawableName);
             dbHandler.addUser(user);
 
             Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);
             finish();
+
         }
     }
 
@@ -59,29 +61,19 @@ public class CreateUser extends AppCompatActivity {
 //Getting the Avatar Image we show to our users
         ImageView iconImg = (ImageView) findViewById(R.id.groupImg);
 //Figuring out the correct image
-        String drawableName = "ic_launcher";
-        switch (data.getIntExtra("imageID",R.id.bedroomImg)) {
-            case R.id.bedroomImg:
-                drawableName = "bedroom";
+        drawableName = "usericon";
+        switch (data.getIntExtra("usericon",R.id.userImg)) {
+            case R.id.userImg:
+                drawableName = "usericon";
                 break;
-            case R.id.kitchenImg:
-                drawableName = "kitchen";
+            case R.id.maleImg:
+                drawableName = "maleicon";
                 break;
-            case R.id.bathroomImg:
-                drawableName = "bathroom";
-                break;
-            case R.id.outdoorImg:
-                drawableName = "outdoor";
-                break;
-            case R.id.fullhouseImg:
-                drawableName = "fullhouse";
-                break;
-
-            case R.id.starImg:
-                drawableName = "fullhouse";
+            case R.id.femaleImg:
+                drawableName = "femaleicon";
                 break;
             default:
-                drawableName = "ic_launcher";
+                drawableName = "usericon";
                 break;
         }
         int resID = getResources().getIdentifier(drawableName, "drawable",

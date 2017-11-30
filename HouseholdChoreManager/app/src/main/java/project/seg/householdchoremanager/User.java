@@ -22,7 +22,7 @@ public class User {
         password = passwd;
         adult = adlt;
         points = ponts;
-        drawableIcon = drawableIcon;
+        this.drawableIcon = drawableIcon;
     }
 
     public String getName(){

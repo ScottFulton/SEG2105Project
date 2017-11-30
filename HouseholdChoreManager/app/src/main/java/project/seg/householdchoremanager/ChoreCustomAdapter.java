@@ -1,6 +1,7 @@
 package project.seg.householdchoremanager;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,16 @@ public class ChoreCustomAdapter extends ArrayAdapter {
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
         ImageView choreImage = (ImageView) rowView.findViewById(R.id.icon);
 
-        choreNameTextField.setText(myChores[position].getName());
-        choreDescriptionTextField.setText(myChores[position].getDescription());
-        //choreImage.setImageDrawable();
+        Log.d("CHORENAME",""+"top");
+//        Log.d("CHORENAME",""+myChores[position].getName());
+        Log.d("CHORENAME",""+"bottom");
+        if(myChores[position]!=null) {
+            choreNameTextField.setText(myChores[position].getName());
+            choreDescriptionTextField.setText(myChores[position].getDescription());
+            //choreImage.setImageDrawable();
+        }
 
         return rowView;
+
     }
 }

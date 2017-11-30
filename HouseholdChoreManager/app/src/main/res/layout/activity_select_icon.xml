@@ -9,21 +9,23 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
 
         <TextView
             android:id="@+id/textView4"
@@ -38,7 +40,7 @@
             android:rowCount="2">
 
             <ImageView
-                android:id="@+id/bathroomImg"
+                android:id="@+id/femaleImg"
                 android:layout_width="125dp"
                 android:layout_height="100dp"
                 android:layout_column="2"
@@ -46,10 +48,10 @@
                 android:layout_row="0"
                 android:layout_rowSpan="1"
                 android:onClick="SetIcon"
-                app:srcCompat="@drawable/bathroom" />
+                app:srcCompat="@drawable/femaleicon" />
 
             <ImageView
-                android:id="@+id/bedroomImg"
+                android:id="@+id/userImg"
                 android:layout_width="125dp"
                 android:layout_height="100dp"
                 android:layout_column="0"
@@ -57,10 +59,10 @@
                 android:layout_row="0"
                 android:layout_rowSpan="1"
                 android:onClick="SetIcon"
-                app:srcCompat="@drawable/bedroom" />
+                app:srcCompat="@drawable/usericon" />
 
             <ImageView
-                android:id="@+id/kitchenImg"
+                android:id="@+id/maleImg"
                 android:layout_width="125dp"
                 android:layout_height="100dp"
                 android:layout_column="1"
@@ -68,38 +70,7 @@
                 android:layout_row="0"
                 android:layout_rowSpan="1"
                 android:onClick="SetIcon"
-                app:srcCompat="@drawable/kitchen" />
-
-            <ImageView
-                android:id="@+id/outdoorImg"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_column="0"
-                android:layout_columnSpan="1"
-                android:layout_row="1"
-                android:layout_rowSpan="1"
-                android:onClick="SetIcon"
-                app:srcCompat="@drawable/outdoor" />
-
-            <ImageView
-                android:id="@+id/fullhouseImg"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_column="1"
-                android:layout_columnSpan="1"
-                android:layout_row="1"
-                android:layout_rowSpan="1"
-                android:onClick="SetIcon"
-                app:srcCompat="@drawable/fullhouse" />
-
-            <ImageView
-                android:id="@+id/starImg"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_column="2"
-                android:layout_row="1"
-                android:onClick="SetIcon"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
+                app:srcCompat="@drawable/maleicon" />
 
         </GridLayout>
 
