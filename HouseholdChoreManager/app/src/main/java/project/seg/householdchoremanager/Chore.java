@@ -91,10 +91,6 @@ public class Chore {
         return;
     }
 
-    public void addResource(String resource){
-
-    }
-
     public void setReward(int reward){
         this.reward = reward;
     }
