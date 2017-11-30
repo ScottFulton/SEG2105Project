@@ -5,11 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="project.seg.householdchoremanager.MainActivity">
-
     <ListView
+        android:layout_marginTop="50dp"
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="4dp">
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/manageChoresButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage Chores" />
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
