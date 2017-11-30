@@ -81,7 +81,7 @@ public class EditChore extends AppCompatActivity {
         if(!allFieldsFilled(view)) {
             groupView.setText("Please make all fields valid entries");
         } else if(dateBox.getText().toString().length() != 8){
-            groupView.setText("Please enter an 8 due date");
+            groupView.setText("Please enter an 8 digit due date");
         } else {
             Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
                     , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
