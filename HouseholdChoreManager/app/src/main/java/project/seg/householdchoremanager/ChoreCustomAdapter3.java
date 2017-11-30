@@ -21,7 +21,7 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
 
 
     public ChoreCustomAdapter3(Context context, Chore[] choreList, BtnClickListener listener, BtnClickListener listener2) {
-        super(context, R.layout.chore_item_layout, choreList);
+        super(context, R.layout.chore_item_layout2, choreList);
         this.context = context;
         this.myChores = choreList;
         this.mClickListener = listener;
@@ -30,7 +30,7 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.chore_item_layout, parent, false);
+        View rowView = inflater.inflate(R.layout.chore_item_layout2, parent, false);
 
         TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemName);
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
@@ -84,7 +84,7 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
             drawableName = "fullhouse";
         }
         else if (group.equals("Outdoors")){
-            drawableName = "outdoors";
+            drawableName = "outdoor";
         }
         return drawableName;
     }
