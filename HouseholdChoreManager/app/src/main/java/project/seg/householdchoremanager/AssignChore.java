@@ -23,8 +23,8 @@ public class AssignChore extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Intent returnIntent = new Intent();
-                setResult(RESULT_OK, returnIntent);
                 returnIntent.putExtra("name", userList[position].getName());
+                setResult(RESULT_OK, returnIntent);
                 finish();
             }
         });

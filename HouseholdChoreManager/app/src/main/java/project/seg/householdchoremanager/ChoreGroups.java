@@ -22,6 +22,7 @@ public class ChoreGroups extends AppCompatActivity {
 //        //not needed in final prod
 //        Chore chore = new Chore("chorenameBe","descname","resname","Bedroom",212,20171129,"");
 //        Chore chore2 = new Chore("chorenameK","descname","resname","Kitchen",212,20171129,"");
+//        chore2.setAssigned("Chris");
 //        Chore chore3 = new Chore("chorenameBa","descname","resname","Bathroom",212,20171129,"");
 //        Chore chore4 = new Chore("chorenameO","descname","resname","Outdoor",212,20171129,"");
 //        Chore chore5 = new Chore("chorename","descname","resname","Full House",212,20171129,"");
