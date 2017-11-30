@@ -36,6 +36,15 @@
         <activity android:name=".LoginActivity" />
         <!-- <activity android:name=".LoginActivity"></activity> -->
         <activity android:name=".NewUserActivity"></activity>
+        <activity android:name=".CreateUser"></activity>
+        <activity android:name=".ChoreDetailsActivity"></activity>
+        <activity android:name=".EditChore"></activity>
+        <activity android:name=".ManageChores"></activity>
+        <activity android:name=".SelectGroup"></activity>
+        <activity android:name=".SelectIcon"></activity>
+        <activity android:name=".YourChoresActivity"></activity>
+
+
     </application>
 
 </manifest>
