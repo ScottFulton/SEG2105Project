@@ -20,11 +20,11 @@ public class ChoreGroups extends AppCompatActivity {
         setContentView(R.layout.activity_chore_groups);
 
 //        //not needed in final prod
-//        Chore chore = new Chore("chorenameBe","descname","resname","Bedroom",212,20171129,"Joe");
-//        Chore chore2 = new Chore("chorenameK","descname","resname","Kitchen",212,20171129,"Joe");
-//        Chore chore3 = new Chore("chorenameBa","descname","resname","Bathroom",212,20171129,"Joe");
-//        Chore chore4 = new Chore("chorenameO","descname","resname","Outdoor",212,20171129,"Joe");
-//        Chore chore5 = new Chore("chorename","descname","resname","Full House",212,20171129,"Joe");
+//        Chore chore = new Chore("chorenameBe","descname","resname","Bedroom",212,20171129,"");
+//        Chore chore2 = new Chore("chorenameK","descname","resname","Kitchen",212,20171129,"");
+//        Chore chore3 = new Chore("chorenameBa","descname","resname","Bathroom",212,20171129,"");
+//        Chore chore4 = new Chore("chorenameO","descname","resname","Outdoor",212,20171129,"");
+//        Chore chore5 = new Chore("chorename","descname","resname","Full House",212,20171129,"");
 
 
         //all added for dynamic chores

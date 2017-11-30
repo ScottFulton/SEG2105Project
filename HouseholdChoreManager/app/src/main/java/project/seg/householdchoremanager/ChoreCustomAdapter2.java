@@ -41,7 +41,7 @@ public class ChoreCustomAdapter2 extends ArrayAdapter {
         }else if(groups.equals("Bathroom")){
             choreImage.setImageResource(R.drawable.bathroom);
         }else if(groups.equals("Outdoor")){
-            choreImage.setImageResource(R.drawable.outside);
+            choreImage.setImageResource(R.drawable.outdoor);
         }else if(groups.equals("Full House")){
             choreImage.setImageResource(R.drawable.fullhouse);
         }
