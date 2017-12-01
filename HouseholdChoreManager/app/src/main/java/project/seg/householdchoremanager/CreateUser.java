@@ -43,7 +43,7 @@ public class CreateUser extends AppCompatActivity {
         } else if(!allFieldsFilled(view)) {
             textError.setText("Please make sure all entries valid");
         } else {
-            User user = new User(username.getText().toString(), password.getText().toString(), parentAccount.isChecked(), 0, drawableName);
+            User user = new User(username.getText().toString(), password.getText().toString(), !parentAccount.isChecked(), 0, drawableName);
             dbHandler.addUser(user);
             Toast.makeText(getApplicationContext(), "User created", Toast.LENGTH_LONG).show();
             Intent returnIntent = new Intent();

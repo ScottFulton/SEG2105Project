@@ -3,6 +3,7 @@
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
+        import android.support.v4.widget.SwipeRefreshLayout;
         import android.support.v7.app.AppCompatActivity;
         import android.util.Log;
         import android.view.View;
@@ -93,8 +94,18 @@ public class YourChoresActivity extends AppCompatActivity {
             }
         });
 
-
-
+        /*
+        SWIPE TO REFRESH CODE
+         */
+        SwipeRefreshLayout swipeRefresh = (SwipeRefreshLayout)findViewById(R.id.swipeRefresh);
+        swipeRefresh.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        recreate();
+                    }
+                }
+        );
 
 
         /*
@@ -129,6 +140,7 @@ public class YourChoresActivity extends AppCompatActivity {
         //this is to show how many points the user has
         TextView newPoints = (TextView)findViewById(R.id.pointsTextView);
         String childPoints = getString(R.string.childPoints);
+        Log.d("POINTS:", ""+childPoints);
         childPoints = "Points: " + onlineUser.getPoints();
         ImageView profileIcon = (ImageView)findViewById(R.id.memberAvatar);
         //still need a display pic thing

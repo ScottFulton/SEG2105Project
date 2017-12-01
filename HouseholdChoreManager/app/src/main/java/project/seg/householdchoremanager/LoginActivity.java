@@ -33,11 +33,37 @@ public class LoginActivity extends AppCompatActivity {
 
         if(users.authUser(name, password)){
             /*
-            Look guys I'll explain it later just trust me this is way better
-             */
+
+            SharedPreferences allows you to store, retrieve, modify, and fetch data from any class.
+            It works the same way intents do with a keyname and value, but it only works with primitive
+            types unless you want to go into serializations or parcelables.
+
+            To add something to a shared preferences you launch the editor like so:
+            SharedPreferences.Editor [editorVarName] = getSharedPreferences("nameOfPrefs", MODE_PRIVATE).edit();
+            Then you use the put function:
+            editorVarName.put[type of your object]("objectKey", objectValue);
+            Then you apply it to the map:
+            editorVarName.apply();
+
+            To receive you would for example do:
+            SharedPreferences nameOfPrefs = getSharedPreferences("nameOfPrefs", MODE_PRIVATE);
+            SomeType s = nameOfPrefs.getSomeType("objectKey", null); <-- the second value here
+            is what is applied to s instead if it can't find the key
+
+            */
             SharedPreferences.Editor editor = getSharedPreferences("sessionDetails", MODE_PRIVATE).edit();
             editor.putString("sessionUsername", name); //keyName, value
-            editor.apply(); //writes the key to the map for later retrieval
+            editor.apply(); //writes the key to the map sessionDetails
+
+            /*
+
+            To get user data from anywhere:
+            SharedPreferences sessionDetails = getSharedPreferences("sessionDetails", MODE_PRIVATE);
+            String usr = sessionDetails.getString("sessionUsername", null);
+            UserDatabase udb = new UserDatabase(this);
+            final User onlineUser = udb.getUserByName(usr);
+
+             */
 
             //Intent intent = new Intent(getApplicationContext(), ChoreGroups.class);
             //startActivity(intent);
