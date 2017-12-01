@@ -1,6 +1,7 @@
 package project.seg.householdchoremanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -272,15 +273,16 @@ public class ChoreGroups extends AppCompatActivity {
         //this is all nav bar from here on
 //        Button groupsButton = (Button) findViewById(R.id.toGroupButton);
         Button homeButton = (Button) findViewById(R.id.toHomeButton);
+        homeButton.setText("My Chores");
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
 
 
-//        homeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(ChoreGroups.this, yourChoresActivity.class));
-//            }
-//        });
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChoreGroups.this, YourChoresActivity.class));
+            }
+        });
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -293,7 +295,8 @@ public class ChoreGroups extends AppCompatActivity {
         UserDatabase userDB = new UserDatabase(this);
 //        User onlineUser = userDB.getOnlineUser();
 
-        s = getIntent().getStringExtra("USERNAME");
+        SharedPreferences sessionDetails = getSharedPreferences("sessionDetails", MODE_PRIVATE);
+        s = sessionDetails.getString("sessionUsername", null);
 
         User onlineUser = userDB.getUserByName(s);
         //this is to change the name to the correct user
@@ -313,7 +316,6 @@ public class ChoreGroups extends AppCompatActivity {
     //Should be removed when we've implemented ChoreView
     public void manageChoresOnClick(View view){
         Intent newIntent = new Intent(getApplicationContext(), YourChoresActivity.class);
-        newIntent.putExtra("USERNAME", s);
         startActivity(newIntent);
     }
 }

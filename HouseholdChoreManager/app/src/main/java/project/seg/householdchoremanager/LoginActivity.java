@@ -1,12 +1,15 @@
 package project.seg.householdchoremanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.preference.PreferenceManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,10 +32,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if(users.authUser(name, password)){
+            /*
+            Look guys I'll explain it later just trust me this is way better
+             */
+            SharedPreferences.Editor editor = getSharedPreferences("sessionDetails", MODE_PRIVATE).edit();
+            editor.putString("sessionUsername", name); //keyName, value
+            editor.apply(); //writes the key to the map for later retrieval
+
             //Intent intent = new Intent(getApplicationContext(), ChoreGroups.class);
             //startActivity(intent);
             Intent intent = new Intent(getBaseContext(), YourChoresActivity.class);
-            intent.putExtra("USERNAME", name);
             startActivity(intent);
 
             /*

@@ -23,21 +23,34 @@ public class ChoreCustomAdapter extends ArrayAdapter {
         this.myChores = choreList;
     }
 
+    private static int getStringIdentifier(Context context, String name) {
+        return context.getResources().getIdentifier(name, "string", context.getPackageName());
+    }
+
     public View getView(int position, View convertView, ViewGroup parent) {
+        String groups = myChores[position].getGroup();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.chore_item_layout, parent, false);
-
         TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemName);
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
-        ImageView choreImage = (ImageView) rowView.findViewById(R.id.icon);
+        ImageView choreImage = (ImageView) rowView.findViewById(R.id.groupIcon);
+        //int id = choreImage.getContext().getResources().getIdentifier(groups, "drawable", context.getPackageName());
 
-        Log.d("CHORENAME",""+"top");
-//        Log.d("CHORENAME",""+myChores[position].getName());
-        Log.d("CHORENAME",""+"bottom");
         if(myChores[position]!=null) {
             choreNameTextField.setText(myChores[position].getName());
             choreDescriptionTextField.setText(myChores[position].getDescription());
-            //choreImage.setImageDrawable();
+            //choreImage.setImageResource(id); //TODO make the id method work for getting image resource
+            if(groups.equals("Bedroom")){
+                choreImage.setImageResource(R.drawable.bedroom);
+            }else if(groups.equals("Kitchen")){
+                choreImage.setImageResource(R.drawable.kitchen);
+            }else if(groups.equals("Bathroom")){
+                choreImage.setImageResource(R.drawable.bathroom);
+            }else if(groups.equals("Outdoor")){
+                choreImage.setImageResource(R.drawable.outdoor);
+            }else if(groups.equals("Full House")){
+                choreImage.setImageResource(R.drawable.fullhouse);
+            }
         }
 
         return rowView;

@@ -33,11 +33,21 @@
                 android:layout_height="150dp" />
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                >
                 <TextView
                     android:id="@+id/resourceItems"
                     android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/pointValueText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""/>
@@ -55,6 +65,15 @@
                 android:layout_marginStart="7pt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/setCompleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Completed"/>
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

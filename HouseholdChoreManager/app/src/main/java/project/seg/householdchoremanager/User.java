@@ -65,4 +65,5 @@ public class User {
         this.drawableIcon = drawableIcon;
     }
 
+    public void addPoints(int howMany) { this.points = this.points + howMany; }
 }

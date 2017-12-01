@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EditChore extends AppCompatActivity {
     ImageView groupImg;
@@ -17,6 +18,7 @@ public class EditChore extends AppCompatActivity {
     EditText descriptionBox;
     TextView groupView;
     DatabaseHandler dbHandler;
+    boolean isInGroup = false; //new global variable isInGroup tracks if an item is in a group
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class EditChore extends AppCompatActivity {
             int resID = getResources().getIdentifier(drawableName, "drawable",
                     getPackageName());
             groupImg.setImageResource(resID);
+            isInGroup = true; //if the group is not null it is marked as true
         }
         resourcesBox.setText(resources);
         if (reward != 0) {
@@ -79,9 +82,16 @@ public class EditChore extends AppCompatActivity {
     public void newChore (View view) {
 
         if(!allFieldsFilled(view)) {
-            groupView.setText("Please make all fields valid entries");
+            /*
+             the group view was confusing so I made it a toast and put that up if
+             a user didn't put a chore in a group yet and other error messages, you can change it
+             back if you want -Ben
+            */
+            Toast.makeText(getApplicationContext(), "Please make all fields valid entries", Toast.LENGTH_SHORT).show();
         } else if(dateBox.getText().toString().length() != 8){
-            groupView.setText("Please enter an 8 digit due date");
+            Toast.makeText(getApplicationContext(), "Please enter an 8 digit due date", Toast.LENGTH_SHORT).show();
+        } else if(!isInGroup) { //added error case for an activity not being in a group
+            Toast.makeText(getApplicationContext(), "Please set a group for this chore", Toast.LENGTH_SHORT).show();
         } else {
             Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
                     , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
@@ -152,5 +162,12 @@ public class EditChore extends AppCompatActivity {
                 getPackageName());
         groupImg.setImageResource(resID);
         groupTxt.setText(groupName);
+        isInGroup = true;
+        /*
+         isInGroup is set to true when the OnSetAvatarButton gives a result
+         because you physically can't set a null group in that activity... I think
+         TODO: Bug test SetAvatar more
+         -Ben
+         */
     }
 }

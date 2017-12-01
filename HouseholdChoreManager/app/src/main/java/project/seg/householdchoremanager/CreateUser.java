@@ -3,11 +3,13 @@ package project.seg.householdchoremanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 
@@ -35,7 +37,6 @@ public class CreateUser extends AppCompatActivity {
         dbHandler = new UserDatabase(this);
     }
 
-
     public void newUser (View view) {
         if(dbHandler.checkUser(username.getText().toString())) {
             textError.setText("Username is already taken");
@@ -44,7 +45,7 @@ public class CreateUser extends AppCompatActivity {
         } else {
             User user = new User(username.getText().toString(), password.getText().toString(), parentAccount.isChecked(), 0, drawableName);
             dbHandler.addUser(user);
-
+            Toast.makeText(getApplicationContext(), "User created", Toast.LENGTH_LONG).show();
             Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);
             finish();
