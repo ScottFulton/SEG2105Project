@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         if(users.authUser(name, password)){
             //Intent intent = new Intent(getApplicationContext(), ChoreGroups.class);
             //startActivity(intent);
-            Intent intent = new Intent(getBaseContext(), ChoreGroups.class);
+            Intent intent = new Intent(getBaseContext(), YourChoresActivity.class);
             intent.putExtra("USERNAME", name);
             startActivity(intent);
 
