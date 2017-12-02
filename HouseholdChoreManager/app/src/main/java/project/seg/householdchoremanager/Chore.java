@@ -114,7 +114,7 @@ public class Chore {
     }
 
     public void complete(){
-        //this.setAssigned("No one");
+        this.setAssigned("No one");
         isCompleted = true;
     }
 

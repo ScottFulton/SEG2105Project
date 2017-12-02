@@ -217,9 +217,9 @@ public class UserDatabase extends SQLiteOpenHelper{
     }
     public void updateUser(User updatedUser) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("USERS NEW POINTS", ""+updatedUser.getPoints());
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_POINTS, updatedUser.getPoints());
+        //cv.put(COLUMN_ISADULT, updatedUser.isAdult()); trying to update a boolean value flips it, idk why
         cv.put(COLUMN_NAME, updatedUser.getName());
         cv.put(COLUMN_PASSWORDS, updatedUser.getPassword());
         cv.put(COLUMN_ICON, updatedUser.getDrawableIcon());
