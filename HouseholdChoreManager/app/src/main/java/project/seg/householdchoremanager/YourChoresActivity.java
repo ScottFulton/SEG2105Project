@@ -40,16 +40,19 @@ public class YourChoresActivity extends AppCompatActivity {
         //fetching relevant user info and adding values to the flavour text
         DatabaseHandler db = new DatabaseHandler(this);
         UserDatabase udb = new UserDatabase(this);
-        final User onlineUser = udb.getUserByName(s);
+        User onlineUser = udb.getUserByName(s);
+        Log.d("ISADULT2.5", ""+onlineUser.isAdult());
         flavourText.append(s + "'s Chores");
 
         /*
         * if the current user isn't a parent, the manage chores button is removed from the chore
         * view.
         */
+        Log.d("ISADULT3", ""+onlineUser.isAdult());
         Boolean isParent = onlineUser.isAdult();
         if (!isParent) {
-            manageChores.setVisibility(View.GONE);
+            manageChores.setText(isParent.toString());
+            //manageChores.setVisibility(View.GONE);
         }
 
         Chore[] DBchoreList = db.getAllChores();
@@ -139,9 +142,7 @@ public class YourChoresActivity extends AppCompatActivity {
         newName.setText(onlineUser.getName());
         //this is to show how many points the user has
         TextView newPoints = (TextView)findViewById(R.id.pointsTextView);
-        String childPoints = getString(R.string.childPoints);
-        Log.d("POINTS:", ""+childPoints);
-        childPoints = "Points: " + onlineUser.getPoints();
+        newPoints.setText("Points: " + onlineUser.getPoints());
         ImageView profileIcon = (ImageView)findViewById(R.id.memberAvatar);
         //still need a display pic thing
         int resID = getResources().getIdentifier(onlineUser.getDrawableIcon(), "drawable",

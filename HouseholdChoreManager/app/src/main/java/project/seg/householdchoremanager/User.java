@@ -64,6 +64,4 @@ public class User {
     public void setDrawableIcon(String drawableIcon){
         this.drawableIcon = drawableIcon;
     }
-
-    public void addPoints(int howMany) { this.points = this.points + howMany; }
 }

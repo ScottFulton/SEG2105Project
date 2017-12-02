@@ -31,7 +31,7 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         //Getting sharedPreferences data and getting user
         SharedPreferences sessionDetails = getSharedPreferences("sessionDetails", MODE_PRIVATE);
         String usr = sessionDetails.getString("sessionUsername", null);
-        UserDatabase udb = new UserDatabase(this);
+        final UserDatabase udb = new UserDatabase(this);
         final User onlineUser = udb.getUserByName(usr);
 
 
@@ -95,10 +95,13 @@ public class ChoreDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent managerLaunchInterest = new Intent(getApplicationContext(), YourChoresActivity.class);
                 thisChore.complete(); //TODO complain at Kevin to make this process automatic when complete is called
-                onlineUser.addPoints(points);
+                onlineUser.setPoints(onlineUser.getPoints() + points);
                 Toast.makeText(getApplicationContext(), "Chore completed!", Toast.LENGTH_SHORT).show();
-                Log.d("POINTS:",""+onlineUser.getPoints());
-                db.deleteChore(choreName);
+                Log.d("ISADULTNOW1", ""+onlineUser.isAdult());
+                udb.updateUser(onlineUser);
+                User updatedUser = udb.getUserByName(onlineUser.getName());
+                db.updateChore(thisChore);
+                Log.d("ISADULTNOW2",""+updatedUser.isAdult());
                 startActivityForResult(managerLaunchInterest, 0);
             }
         });

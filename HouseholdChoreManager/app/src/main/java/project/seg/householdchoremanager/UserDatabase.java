@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -61,6 +62,7 @@ public class UserDatabase extends SQLiteOpenHelper{
 
     public void addUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
+        /*
         int adult;
         int points = user.getPoints();
 
@@ -69,12 +71,12 @@ public class UserDatabase extends SQLiteOpenHelper{
         } else{
             adult = 0;
         }
-
+        */
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_PASSWORDS, user.getPassword());
         values.put(COLUMN_POINTS, user.getPoints());
-        values.put(COLUMN_ISADULT, adult);
+        values.put(COLUMN_ISADULT, user.isAdult());
         values.put(COLUMN_ICON, user.getDrawableIcon());
 
 
@@ -213,26 +215,21 @@ public class UserDatabase extends SQLiteOpenHelper{
         }
         db.close();
     }
-
-    /*
-    public void giveUserPoints(String name, int points){
-        //1) Copy the user's info
-        //2) Delete them
-        //3) Append points to temp user
-        //4) Load database with temp user
-    }
-    */
-
-
-
-    /*
-    public boolean givePoints(String name, int points){
+    public void updateUser(User updatedUser) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \""+name+"\"";
+        Log.d("USERS NEW POINTS", ""+updatedUser.getPoints());
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_POINTS, updatedUser.getPoints());
+        cv.put(COLUMN_NAME, updatedUser.getName());
+        cv.put(COLUMN_PASSWORDS, updatedUser.getPassword());
+        cv.put(COLUMN_ICON, updatedUser.getDrawableIcon());
+        String query = "Select * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \'" + updatedUser.getName() + "\'";
+        String[] name = {updatedUser.getName()};
         Cursor cursor = db.rawQuery(query, null);
-        if(cursor.moveToFirst()){
-
+        if (cursor.moveToFirst()){
+            db.update(TABLE_USERS,cv, COLUMN_NAME + "=?", name);
+            cursor.close();
         }
+        db.close();
     }
-    */
 }

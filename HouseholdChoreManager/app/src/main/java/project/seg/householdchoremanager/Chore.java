@@ -1,5 +1,7 @@
 package project.seg.householdchoremanager;
 
+import android.util.Log;
+
 /**
  * Created by Kevin on 27/11/17.
  *
@@ -112,6 +114,7 @@ public class Chore {
     }
 
     public void complete(){
+        //this.setAssigned("No one");
         isCompleted = true;
     }
 
