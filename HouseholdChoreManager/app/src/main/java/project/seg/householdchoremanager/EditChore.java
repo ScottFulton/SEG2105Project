@@ -72,8 +72,8 @@ public class EditChore extends AppCompatActivity {
         else if (group.equals("Full House")){
             drawableName = "fullhouse";
         }
-        else if (group.equals("Outdoors")){
-            drawableName = "outdoors";
+        else if (group.equals("Outdoor")){
+            drawableName = "outdoor";
         }
 
         return drawableName;
@@ -132,7 +132,7 @@ public class EditChore extends AppCompatActivity {
 //Figuring out the correct image
         String drawableName = "ic_launcher";
         String groupName = "Click on image to select group";
-        switch (data.getIntExtra("imageID",R.id.bedroomImg)) {
+        switch (data.getIntExtra("imageID",R.id.groupImg)) {
             case R.id.bedroomImg:
                 drawableName = "bedroom";
                 groupName = "Bedroom";
@@ -163,11 +163,5 @@ public class EditChore extends AppCompatActivity {
         groupImg.setImageResource(resID);
         groupTxt.setText(groupName);
         isInGroup = true;
-        /*
-         isInGroup is set to true when the OnSetAvatarButton gives a result
-         because you physically can't set a null group in that activity... I think
-         TODO: Bug test SetAvatar more
-         -Ben
-         */
     }
 }

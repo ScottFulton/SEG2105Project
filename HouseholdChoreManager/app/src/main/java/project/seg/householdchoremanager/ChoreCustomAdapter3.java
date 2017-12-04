@@ -93,7 +93,7 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
         else if (group.equals("Full House")){
             drawableName = "fullhouse";
         }
-        else if (group.equals("Outdoors")){
+        else if (group.equals("Outdoor")){
             drawableName = "outdoor";
         }
         return drawableName;

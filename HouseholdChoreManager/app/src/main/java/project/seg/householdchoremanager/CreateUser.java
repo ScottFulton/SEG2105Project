@@ -72,7 +72,7 @@ public class CreateUser extends AppCompatActivity {
         ImageView iconImg = (ImageView) findViewById(R.id.groupImg);
 //Figuring out the correct image
         drawableName = "usericon";
-        switch (data.getIntExtra("usericon",R.id.userImg)) {
+        switch (data.getIntExtra("imageID",R.id.groupImg)) {
             case R.id.userImg:
                 drawableName = "usericon";
                 break;

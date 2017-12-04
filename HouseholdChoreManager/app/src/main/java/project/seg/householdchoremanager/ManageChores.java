@@ -75,6 +75,7 @@ public class ManageChores extends AppCompatActivity {
     public void addChore(View view) {
 //Application Context and Activity
         Intent intent = new Intent(getApplicationContext(), EditChore.class);
+        intent.putExtra("isNewChore", true);
         startActivityForResult (intent,0);
     }
 
