@@ -203,7 +203,7 @@ public class UserDatabase extends SQLiteOpenHelper{
     }
 
 
-    //Not even sure if this works
+    //unused
     public void deleteUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "Select * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \"" + name + "\"";
@@ -215,18 +215,22 @@ public class UserDatabase extends SQLiteOpenHelper{
         }
         db.close();
     }
+    //updates everything except for adult status
     public void updateUser(User updatedUser) {
+        //getting database and building a new content values variable from the passed user
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_POINTS, updatedUser.getPoints());
-        //cv.put(COLUMN_ISADULT, updatedUser.isAdult()); trying to update a boolean value flips it, idk why
         cv.put(COLUMN_NAME, updatedUser.getName());
         cv.put(COLUMN_PASSWORDS, updatedUser.getPassword());
         cv.put(COLUMN_ICON, updatedUser.getDrawableIcon());
+        //building the search query and finding the proper value
         String query = "Select * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \'" + updatedUser.getName() + "\'";
         String[] name = {updatedUser.getName()};
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
+            //where clause should use selection args, unsanitzed sql inputs are dangerous and prone
+            //to injection
             db.update(TABLE_USERS,cv, COLUMN_NAME + "=?", name);
             cursor.close();
         }

@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences nameOfPrefs = getSharedPreferences("nameOfPrefs", MODE_PRIVATE);
             SomeType s = nameOfPrefs.getSomeType("objectKey", null); <-- the second value here
             is what is applied to s instead if it can't find the key
-
+            -Ben
             */
             SharedPreferences.Editor editor = getSharedPreferences("sessionDetails", MODE_PRIVATE).edit();
             editor.putString("sessionUsername", name); //keyName, value
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             String usr = sessionDetails.getString("sessionUsername", null);
             UserDatabase udb = new UserDatabase(this);
             final User onlineUser = udb.getUserByName(usr);
-
+            -Ben
              */
 
             //Intent intent = new Intent(getApplicationContext(), ChoreGroups.class);

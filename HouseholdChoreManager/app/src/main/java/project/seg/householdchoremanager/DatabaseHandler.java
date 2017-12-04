@@ -117,6 +117,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return result;
     }
     public void updateChore(Chore chore) {
+        //follows same pattern as updateUser in UserDatabase, see function there
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_CHORENAME, chore.getName());

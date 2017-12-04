@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ManageChores extends AppCompatActivity {
@@ -20,6 +21,15 @@ public class ManageChores extends AppCompatActivity {
         final Chore[] choreList = dbHandler.getAllChores();
         newChoreList = choreList;
         ListView listView = (ListView) findViewById(R.id.list);
+        //adding functionality to the "Go Back" button
+        Button yourChoresButton = (Button) findViewById(R.id.goBackButton);
+        yourChoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent managerLaunchInterest = new Intent(getApplicationContext(), YourChoresActivity.class);
+                startActivityForResult(managerLaunchInterest, 0);
+            }
+        });
         ChoreCustomAdapter3 adapter = new ChoreCustomAdapter3(this, choreList,  new BtnClickListener() {
 
             @Override

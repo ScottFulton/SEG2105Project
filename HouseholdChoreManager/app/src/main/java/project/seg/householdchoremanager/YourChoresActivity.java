@@ -41,37 +41,40 @@ public class YourChoresActivity extends AppCompatActivity {
         DatabaseHandler db = new DatabaseHandler(this);
         UserDatabase udb = new UserDatabase(this);
         User onlineUser = udb.getUserByName(s);
-        Log.d("ISADULT2.5", ""+onlineUser.isAdult());
         flavourText.append(s + "'s Chores");
 
         /*
         * if the current user isn't a parent, the manage chores button is removed from the chore
         * view.
         */
-        Log.d("ISADULT3", ""+onlineUser.isAdult());
         Boolean isParent = onlineUser.isAdult();
         if (!isParent) {
-            manageChores.setText(isParent.toString());
-            //manageChores.setVisibility(View.GONE);
+            manageChores.setVisibility(View.GONE);
         }
 
         Chore[] DBchoreList = db.getAllChores();
         ArrayList<Chore> choreArrayList = new ArrayList<>();
 
-
+        /*
+        * uses the chore database above to build an array list of chores, all chores that have their
+        * assigning matching the username are added to the array list
+         */
         for (Chore c : DBchoreList) {
             try {
                 if (c.getAssigned().equals(onlineUser.getName())) {
-                    Log.d("ASSIGNED", "" + c.getAssigned());
                     choreArrayList.add(c);
-
                 }
             } catch (Exception e) {}
         }
+        /*
+        * since the choreArrayList adapter uses arrays instead of array list it is better to convert
+        * the array list to a static array
+        */
         final Chore[] choreList = choreArrayList.toArray(new Chore[choreArrayList.size()]);
         ChoreCustomAdapter adapter = new ChoreCustomAdapter(this, choreList);
         listView.setAdapter(adapter);
 
+        //sets action for when user clicks manage chores button
         manageChores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +118,7 @@ public class YourChoresActivity extends AppCompatActivity {
         NAV BAR CODE
          */
         Button groupsButton = (Button) findViewById(R.id.toGroupButton);
-//      Button homeButton = (Button) findViewById(R.id.toHomeButton);
+//      Button homeButton = (Button) findViewById(R.id.toHomeButton); <- home button unneeded for this nav bar
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
 
 
@@ -149,9 +152,6 @@ public class YourChoresActivity extends AppCompatActivity {
                 getPackageName());
         profileIcon.setImageResource(resID);
     }
-
-
-
 }
 
 //Debug method to bring us to the manageChores activity.

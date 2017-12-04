@@ -24,16 +24,14 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chore_details);
 
-        final Button setComplete = (Button) findViewById(R.id.setCompleteButton);
+        Button setComplete = (Button) findViewById(R.id.setCompleteButton);
         TextView pointsText = (TextView) findViewById(R.id.pointValueText);
-
 
         //Getting sharedPreferences data and getting user
         SharedPreferences sessionDetails = getSharedPreferences("sessionDetails", MODE_PRIVATE);
         String usr = sessionDetails.getString("sessionUsername", null);
         final UserDatabase udb = new UserDatabase(this);
         final User onlineUser = udb.getUserByName(usr);
-
 
         //Getting intents from YourChoresActivity and adding them to variables for ease of use
         Bundle intents = getIntent().getExtras();
@@ -51,6 +49,7 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         }
         String choreResources = choreResourcesBuilder.toString(); //Formatted chore resources
         pointsText.append("Points: " + pointValue);
+
         //Appending appropriate values to the text view in the detail view
         TextView choreTitle = (TextView)findViewById(R.id.choreTitle);
         choreTitle.append(choreName);
@@ -59,7 +58,7 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         TextView choreDescription = (TextView)findViewById(R.id.choreDescription);
         choreDescription.append(choreDescriptionString);
 
-        //TODO Make the image picker better, seriously there has to be a less shit way
+        //Image selector based on what group it is in
         ImageView choreImage = (ImageView)findViewById(R.id.choreIcon);
         if(groups.equals("Bedroom")){
             choreImage.setImageResource(R.drawable.bedroom);
@@ -80,7 +79,6 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         Chore[] DBchoreList = db.getAllChores();
 
         //finding the specific chore and applying it to a variable
-        //TODO complain at Scott to make a getChoreByName function for the chore DB
         Chore foundChore = null;
         for(Chore c : DBchoreList) {
             if(c.getName().equals(choreName)) {
@@ -88,20 +86,19 @@ public class ChoreDetailsActivity extends AppCompatActivity {
             }
         }
         final Chore thisChore = foundChore;
+        //putting points into variable for readability
         final int points = thisChore.getReward();
 
         setComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent managerLaunchInterest = new Intent(getApplicationContext(), YourChoresActivity.class);
-                thisChore.complete(); //TODO complain at Kevin to make this process automatic when complete is called
-                onlineUser.setPoints(onlineUser.getPoints() + points);
-                Toast.makeText(getApplicationContext(), "Chore completed!", Toast.LENGTH_SHORT).show();
-                Log.d("ISADULTNOW1", ""+onlineUser.isAdult());
+                thisChore.complete(); //completes the chore
+                onlineUser.setPoints(onlineUser.getPoints() + points); //adds the points to the user
+                Toast.makeText(getApplicationContext(), "Chore completed!", Toast.LENGTH_SHORT).show(); //shows toast for posterity
+                //updates both databases
                 udb.updateUser(onlineUser);
-                User updatedUser = udb.getUserByName(onlineUser.getName());
                 db.updateChore(thisChore);
-                Log.d("ISADULTNOW2",""+updatedUser.isAdult());
                 startActivityForResult(managerLaunchInterest, 0);
             }
         });

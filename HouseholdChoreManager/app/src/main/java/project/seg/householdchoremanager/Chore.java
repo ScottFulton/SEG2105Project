@@ -112,7 +112,7 @@ public class Chore {
     public void setAssigned(String assigned) {
         this.assigned = assigned;
     }
-
+    //sets isComplete to true and resets the assign
     public void complete(){
         this.setAssigned("No one");
         isCompleted = true;

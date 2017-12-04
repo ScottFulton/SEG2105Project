@@ -22,17 +22,23 @@
             app:layout_constraintVertical_weight="1"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
-
-        <Button
-            android:id="@+id/button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:onClick="addChore"
-            android:text="Add Chore"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintVertical_weight="1"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_height="42dp">
+            <Button
+                android:id="@+id/goBackButton"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:text="Go Back"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:onClick="addChore"
+                android:text="Add Chore"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
