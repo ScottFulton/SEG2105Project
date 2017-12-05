@@ -136,4 +136,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         db.close();
     }
+    public void updateChoreNewName(Chore chore, String oldName) {
+        //etc
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_CHORENAME, oldName);
+        cv.put(COLUMN_DESCRIPTION, chore.getDescription());
+        cv.put(COLUMN_RESOURCES, chore.getResources());
+        cv.put(COLUMN_GROUPNAME, chore.getGroup());
+        cv.put(COLUMN_REWARD, chore.getReward());
+        cv.put(COLUMN_DUEDATE, chore.getDueDate());
+        cv.put(COLUMN_ASSIGNED, chore.getAssigned());
+        String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \'" + chore.getName() + "\'";
+        String[] name = {chore.getName()};
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()){
+            db.update(TABLE_CHORES,cv, COLUMN_CHORENAME + "=?", name);
+            cursor.close();
+        }
+        db.close();
+    }
 }
