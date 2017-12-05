@@ -136,8 +136,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         db.close();
     }
-    public void updateChoreNewName(Chore chore, String oldName) {
-        //etc
+    public void updateChore(Chore chore, String oldName) {
+        //if the name of the chore is being changed, this method is called
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_CHORENAME, oldName);
