@@ -31,9 +31,8 @@ public class ChoreCustomAdapter2 extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.chore_item_layout, parent, false);
         TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemName);
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
-        //TODO - if in certain group set as certain picture.
-        Log.d("CHORELOG",""+myChores[position]);
         ImageView choreImage = (ImageView) rowView.findViewById(R.id.groupIcon);
+        //find group that the chore belongs to and set the picture to the correct one
         if(groups.equals("Bedroom")){
             choreImage.setImageResource(R.drawable.bedroom);
         }else if(groups.equals("Kitchen")){
@@ -45,6 +44,7 @@ public class ChoreCustomAdapter2 extends ArrayAdapter {
         }else if(groups.equals("Full House")){
             choreImage.setImageResource(R.drawable.fullhouse);
         }
+        //set the name to choreName
         choreNameTextField.setText(myChores[position]);
         choreDescriptionTextField.setText(null);
 

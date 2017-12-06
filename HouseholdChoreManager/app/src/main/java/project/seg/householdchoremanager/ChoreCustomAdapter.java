@@ -39,7 +39,6 @@ public class ChoreCustomAdapter extends ArrayAdapter {
         if(myChores[position]!=null) {
             choreNameTextField.setText(myChores[position].getName());
             choreDescriptionTextField.setText(myChores[position].getDescription());
-            //choreImage.setImageResource(id); //TODO make the id method work for getting image resource
             if(groups.equals("Bedroom")){
                 choreImage.setImageResource(R.drawable.bedroom);
             }else if(groups.equals("Kitchen")){

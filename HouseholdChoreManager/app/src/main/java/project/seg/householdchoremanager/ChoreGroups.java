@@ -26,23 +26,10 @@ public class ChoreGroups extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chore_groups);
 
-//        //not needed in final prod
-//        Chore chore = new Chore("chorenameBe","descname","resname","Bedroom",212,20171129,"chris");
-//        Chore chore2 = new Chore("chorenameK","descname","resname","Kitchen",212,20171129,"");
-//        chore2.setAssigned("Chris");
-//        Chore chore3 = new Chore("chorenameBa","descname","resname","Bathroom",212,20171129,"");
-//        Chore chore4 = new Chore("chorenameO","descname","resname","Outdoor",212,20171129,"");
-//        Chore chore5 = new Chore("chorename","descname","resname, test 1, test 1","Full House",212,20171129,"");
 
 
         //all added for dynamic chores
         DatabaseHandler db = new DatabaseHandler(this);
-        //not needed in final prod
-//        db.addChore(chore2);
-//        db.addChore(chore3);
-//        db.addChore(chore4);
-//        db.addChore(chore);
-//        db.addChore(chore5);
 
         Chore[] allChores = db.getAllChores();
 
@@ -61,7 +48,7 @@ public class ChoreGroups extends AppCompatActivity {
         Set<String> rListOut = new LinkedHashSet<>();
         Set<String> rListFull = new LinkedHashSet<>();
         List<String> list;
-//
+
 //        this is created to get the list of chores to then be added to a string array thus creating each chore dynamically
         for(Chore chore1 : allChores){
 
@@ -84,13 +71,12 @@ public class ChoreGroups extends AppCompatActivity {
             }else{
                 fullList.add(chore1);
                 for(String list1 : list) {
-                    Log.d("TESTINGSETS",""+list1);
                     rListFull.add(list1);
                 }
             }
         }
 
-        //create strings using stringbuilders of the resources.
+        //create strings of the resources using stringbuilders of the resources.
         final String bedRes = rListBed.toString().replace("[","").replace("]","");
         final String kitRes = rListKit.toString().replace("[","").replace("]","");
         final String bathRes = rListBath.toString().replace("[","").replace("]","");
@@ -98,7 +84,7 @@ public class ChoreGroups extends AppCompatActivity {
         final String fullRes = rListFull.toString().replace("[","").replace("]","");
 
 
-
+        //initialize chorelists for each group
         String[] choreList = new String[bedList.size()];
         String[] choreList2 = new String[kitList.size()];
         String[] choreList3 = new String[bathList.size()];
@@ -155,7 +141,7 @@ public class ChoreGroups extends AppCompatActivity {
             choreList5[i] = choreString;
         }
 
-
+        //add all chores to each listview to be displayed on screen
         final ListView listView = (ListView) findViewById(R.id.choreList);
         ChoreCustomAdapter2 adapter = new ChoreCustomAdapter2(this, choreList, "Bedroom");
         listView.setAdapter(adapter);
@@ -179,7 +165,7 @@ public class ChoreGroups extends AppCompatActivity {
 
         final TextView resList = (TextView)findViewById(R.id.resourcesTextView);
 
-
+        //hide all group lists other than the first one
         listView.setVisibility(View.VISIBLE);
         listView2.setVisibility(View.INVISIBLE);
         listView3.setVisibility(View.INVISIBLE);
@@ -187,21 +173,21 @@ public class ChoreGroups extends AppCompatActivity {
         listView5.setVisibility(View.INVISIBLE);
         resList.setText("Resources: " + bedRes);
 
-//
+
         //Group Buttons
         final Button Bedroom = (Button) findViewById(R.id.BedroomBtn);
         final Button Kitchen = (Button) findViewById(R.id.KitchenBtn);
         final Button Bathroom = (Button) findViewById(R.id.BathroomBtn);
         final Button Outdoor = (Button) findViewById(R.id.OutdoorBtn);
         final Button FullHouse = (Button) findViewById(R.id.FullHouseBtn);
-
+        //initialize group buttons as correct colour
         Bedroom.setBackgroundColor(Color.parseColor("#1c739d"));
         Kitchen.setBackgroundColor(Color.parseColor("#59a2ce"));
         Bathroom.setBackgroundColor(Color.parseColor("#59a2ce"));
         Outdoor.setBackgroundColor(Color.parseColor("#59a2ce"));
         FullHouse.setBackgroundColor(Color.parseColor("#59a2ce"));
 
-        //onclick hide different lists
+        //onclick hide different lists and sets colour to dark if it is the one clicked
         Bedroom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -296,14 +282,14 @@ public class ChoreGroups extends AppCompatActivity {
         homeButton.setText("My Chores");
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
 
-
+        //when home is clicked go to the yourchoresactivity
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ChoreGroups.this, YourChoresActivity.class));
             }
         });
-
+        //when logout is clicked log user out and proceed to login screen with no history so the user cannot press back
         logoutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(ChoreGroups.this, TitleActivity.class);
