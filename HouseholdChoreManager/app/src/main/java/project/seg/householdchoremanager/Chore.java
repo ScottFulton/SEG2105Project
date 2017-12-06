@@ -18,6 +18,7 @@ public class Chore {
     private int duedate;
     private String assigned;
     private boolean isCompleted;
+    private int id;
 
     public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate,String assign){
         name = nam;
@@ -28,6 +29,19 @@ public class Chore {
         duedate = dudate;
         assigned = assign;
         isCompleted  = false;
+        id = 0;
+    }
+
+    public Chore(String nam, String desc, String rescource, String grp, int rewrd, int dudate,String assign, int id){
+        name = nam;
+        description = desc;
+        resources = rescource;
+        group = grp;
+        reward = rewrd;
+        duedate = dudate;
+        assigned = assign;
+        isCompleted  = false;
+        this.id = id;
     }
 
     //Chore constructor for backwards compatability before String assign and boolean assignedTo became a thing
@@ -52,6 +66,14 @@ public class Chore {
         reward = 0;
         duedate = 0;
         assigned = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName(){
