@@ -3,6 +3,7 @@ package project.seg.householdchoremanager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,7 +20,7 @@ public class EditChore extends AppCompatActivity {
     TextView groupView;
     DatabaseHandler dbHandler;
     boolean isInGroup = false; //new global variable isInGroup tracks if an item is in a group
-
+    int editing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class EditChore extends AppCompatActivity {
         String description = intent.getStringExtra("description");
         int reward = intent.getIntExtra("reward", 0);
         int duedate = intent.getIntExtra("duedate", 0);
+        this.editing = intent.getIntExtra("edit", 0);
         nameBox.setText(name);
         descriptionBox.setText(description);
         if (group != null) {
@@ -92,11 +94,23 @@ public class EditChore extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter an 8 digit due date", Toast.LENGTH_SHORT).show();
         } else if(!isInGroup) { //added error case for an activity not being in a group
             Toast.makeText(getApplicationContext(), "Please set a group for this chore", Toast.LENGTH_SHORT).show();
-        } else {
+        } else if (this.editing != 1){
             Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
                     , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
             dbHandler.addChore(chore);
 
+            Intent returnIntent = new Intent();
+            setResult(RESULT_OK, returnIntent);
+            finish();
+
+            //THIS IS THE PROPLEM
+        } else {
+            //Log.d("SSSSs", descriptionBox.getText().toString());
+            Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
+                    , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
+            Log.d("SSSSs", chore.getDescription());
+            final Chore newChore = chore;
+            dbHandler.updateChore(newChore);
             Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);
             finish();

@@ -54,8 +54,8 @@ public class ManageChores extends AppCompatActivity {
                 editorLaunchInterest.putExtra("group",choreList[position].getGroup());
                 editorLaunchInterest.putExtra("reward",choreList[position].getReward());
                 editorLaunchInterest.putExtra("duedate",choreList[position].getDueDate());
+                editorLaunchInterest.putExtra("edit", 1);
                 startActivityForResult(editorLaunchInterest, 0);
-                dbHandler.deleteChore(choreList[position].getName());
             }
 
         }, new BtnClickListener() {
