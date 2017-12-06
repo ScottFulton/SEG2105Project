@@ -15,15 +15,17 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
     private BtnClickListener mClickListener = null;
     private BtnClickListener mClickListener2 = null;
     private BtnClickListener mClickListener3 = null;
+    private BtnClickListener mClickListener4 = null;
 
 
-    public ChoreCustomAdapter3(Context context, Chore[] choreList, BtnClickListener listener, BtnClickListener listener2, BtnClickListener listener3) {
+    public ChoreCustomAdapter3(Context context, Chore[] choreList, BtnClickListener listener, BtnClickListener listener2, BtnClickListener listener3, BtnClickListener listener4) {
         super(context, R.layout.chore_item_layout2, choreList);
         this.context = context;
         this.myChores = choreList;
         this.mClickListener = listener;
         this.mClickListener2 = listener2;
         this.mClickListener3 = listener3;
+        this.mClickListener4 = listener4;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -75,6 +77,18 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
                 // TODO Auto-generated method stub
                 if(mClickListener3 != null)
                     mClickListener3.onBtnClick((Integer) v.getTag());
+            }
+        });
+
+        Button deallocateButton = (Button) rowView.findViewById(R.id.deallocateBtn);
+        deallocateButton.setTag(position); //For passing the list item index
+        deallocateButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if(mClickListener4 != null)
+                    mClickListener4.onBtnClick((Integer) v.getTag());
             }
         });
         return rowView;

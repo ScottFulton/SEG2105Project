@@ -69,13 +69,25 @@ public class ManageChores extends AppCompatActivity {
                 counter = position;
 
             }
-        });
+        }
+        , new BtnClickListener() {
+
+                @Override
+                public void onBtnClick(int position) {
+                    // TODO Auto-generated method stub
+                    // Call your function which creates and shows the dialog here
+                    Log.d("SSSSs", "TEST");
+                    choreList[position].setAssigned("");
+                    final  Chore chore = choreList[position];
+                    dbHandler.updateChore(chore);
+
+                }
+            });
         listView.setAdapter(adapter);
     }
     public void addChore(View view) {
 //Application Context and Activity
         Intent intent = new Intent(getApplicationContext(), EditChore.class);
-        intent.putExtra("isNewChore", true);
         startActivityForResult (intent,0);
     }
 
@@ -86,15 +98,12 @@ public class ManageChores extends AppCompatActivity {
         if(resultCode==RESULT_OK){
             try {
                 newChoreList[counter].setAssigned(data.getStringExtra("name"));
-                dbHandler.deleteChore(newChoreList[counter].getName());
-                dbHandler.addChore(newChoreList[counter]);
+                dbHandler.updateChore(newChoreList[counter]);
             }
             catch (Exception e){
                 System.out.println("");
             }
-            Intent refresh = new Intent(this, ManageChores.class);
-            startActivity(refresh);
-            this.finish();
+            refresh();
 
         }
     }

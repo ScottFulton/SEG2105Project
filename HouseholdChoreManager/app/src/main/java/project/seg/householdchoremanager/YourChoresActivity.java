@@ -152,6 +152,20 @@ public class YourChoresActivity extends AppCompatActivity {
                 getPackageName());
         profileIcon.setImageResource(resID);
     }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode== RESULT_CANCELED){
+            refresh();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            refresh();
+        }
+    }
+    public void refresh(){
+        Intent refresh = new Intent(this, YourChoresActivity.class);
+        startActivity(refresh);
+        this.finish();
+    }
 }
 
 //Debug method to bring us to the manageChores activity.

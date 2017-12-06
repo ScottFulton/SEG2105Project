@@ -110,8 +110,6 @@ public class EditChore extends AppCompatActivity {
             //Log.d("SSSSs", descriptionBox.getText().toString());
             Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
                     , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
-            Log.d("SSSSs", chore.getName());
-            Log.d("SSSSSs", oldName);
             dbHandler.updateChore(chore, oldName);
             Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);

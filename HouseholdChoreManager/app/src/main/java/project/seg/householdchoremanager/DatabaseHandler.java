@@ -17,7 +17,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "HouseChores.db";
     public static final String TABLE_CHORES = "chores";
-    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_CHORENAME = "chorename";
     public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_RESOURCES = "resources";
@@ -36,8 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Creates both tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CHORES_TABLE = "CREATE TABLE " + TABLE_CHORES + " (" + COLUMN_ID
-                + " INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN_CHORENAME+" TEXT, " +
+        String CREATE_CHORES_TABLE = "CREATE TABLE " + TABLE_CHORES + " ("+COLUMN_CHORENAME+" TEXT PRIMARY KEY, " +
                 COLUMN_DESCRIPTION + " TEXT, " + COLUMN_RESOURCES + " TEXT, " + COLUMN_GROUPNAME
                 + " TEXT, " + COLUMN_REWARD + " INTEGER, " + COLUMN_DUEDATE + " INTEGER, " + COLUMN_ASSIGNED
                 + " TEXT " + ")";
@@ -108,8 +106,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \"" + chorename + "\"";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
-            String idStr = cursor.getString(0);
-            db.delete(TABLE_CHORES, COLUMN_ID + " = " + idStr, null);
+            String[] name = {chorename};
+            db.delete(TABLE_CHORES, COLUMN_CHORENAME + "=?", name);
             cursor.close();
             result = true;
         }
