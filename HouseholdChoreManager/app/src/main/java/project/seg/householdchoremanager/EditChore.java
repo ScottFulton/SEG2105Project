@@ -21,7 +21,6 @@ public class EditChore extends AppCompatActivity {
     DatabaseHandler dbHandler;
     boolean isInGroup = false; //new global variable isInGroup tracks if an item is in a group
     int editing;
-    String oldName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,6 @@ public class EditChore extends AppCompatActivity {
         int duedate = intent.getIntExtra("duedate", 0);
         this.editing = intent.getIntExtra("edit", 0);
         nameBox.setText(name);
-        oldName = name;
         descriptionBox.setText(description);
         if (group != null) {
             groupView.setText(group);
@@ -110,9 +108,9 @@ public class EditChore extends AppCompatActivity {
             //Log.d("SSSSs", descriptionBox.getText().toString());
             Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
                     , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
-            Log.d("SSSSs", chore.getName());
-            Log.d("SSSSSs", oldName);
-            dbHandler.updateChore(chore, oldName);
+            Log.d("SSSSs", chore.getDescription());
+            final Chore newChore = chore;
+            dbHandler.updateChore(newChore);
             Intent returnIntent = new Intent();
             setResult(RESULT_OK, returnIntent);
             finish();
