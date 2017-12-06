@@ -19,6 +19,7 @@ public class EditChore extends AppCompatActivity {
     EditText descriptionBox;
     TextView groupView;
     DatabaseHandler dbHandler;
+    String oldName;
     boolean isInGroup = false; //new global variable isInGroup tracks if an item is in a group
     int editing;
     @Override
@@ -41,7 +42,10 @@ public class EditChore extends AppCompatActivity {
         int reward = intent.getIntExtra("reward", 0);
         int duedate = intent.getIntExtra("duedate", 0);
         this.editing = intent.getIntExtra("edit", 0);
+
+        Log.d("editing1", String.valueOf(editing));
         nameBox.setText(name);
+        oldName = name;
         descriptionBox.setText(description);
         if (group != null) {
             groupView.setText(group);
@@ -51,13 +55,16 @@ public class EditChore extends AppCompatActivity {
             groupImg.setImageResource(resID);
             isInGroup = true; //if the group is not null it is marked as true
         }
+        Log.d("editing2", String.valueOf(editing));
         resourcesBox.setText(resources);
         if (reward != 0) {
             pointsBox.setText(Integer.toString(reward));
         }
+        Log.d("editing3", String.valueOf(editing));
         if (duedate != 0){
             dateBox.setText(Integer.toString(duedate));
         }
+        Log.d("editing4", String.valueOf(editing));
     }
 
     private String whatGroup(String group){
@@ -103,12 +110,13 @@ public class EditChore extends AppCompatActivity {
             setResult(RESULT_OK, returnIntent);
             finish();
 
-            //THIS IS THE PROPLEM
         } else {
             //Log.d("SSSSs", descriptionBox.getText().toString());
             Chore chore = new Chore(nameBox.getText().toString(), descriptionBox.getText().toString(), resourcesBox.getText().toString()
                     , groupView.getText().toString(), Integer.parseInt(pointsBox.getText().toString()), Integer.parseInt(dateBox.getText().toString()));
-            Log.d("SSSSs", chore.getDescription());
+            Log.d("SSSSs", chore.getName());
+            Log.d("SSSSSs", oldName);
+            dbHandler.updateChore(chore, oldName);
             final Chore newChore = chore;
             dbHandler.updateChore(newChore);
             Intent returnIntent = new Intent();
