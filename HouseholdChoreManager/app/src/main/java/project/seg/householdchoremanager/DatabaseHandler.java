@@ -137,32 +137,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
     public void updateChore(Chore chore, String oldName) {
-<<<<<<< HEAD
         //if the name of the chore is being changed, this method is called
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_CHORENAME, oldName);
-=======
-        //follows same pattern as updateUser in UserDatabase, see function there
-        Log.d("OLD", oldName);
-        Log.d("NEW", chore.getName());
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
         cv.put(COLUMN_CHORENAME, chore.getName());
->>>>>>> testing
         cv.put(COLUMN_DESCRIPTION, chore.getDescription());
         cv.put(COLUMN_RESOURCES, chore.getResources());
         cv.put(COLUMN_GROUPNAME, chore.getGroup());
         cv.put(COLUMN_REWARD, chore.getReward());
         cv.put(COLUMN_DUEDATE, chore.getDueDate());
         cv.put(COLUMN_ASSIGNED, chore.getAssigned());
-<<<<<<< HEAD
-        String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \'" + chore.getName() + "\'";
-        String[] name = {chore.getName()};
-=======
         String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \'" + oldName + "\'";
         String[] name = {oldName};
->>>>>>> testing
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
             db.update(TABLE_CHORES,cv, COLUMN_CHORENAME + "=?", name);
