@@ -111,27 +111,47 @@ public class ChoreGroups extends AppCompatActivity {
         //creating each chore string for list
         for(int i = 0; i < bedList.size(); i++){
             Chore addingChore = bedList.get(i);
-            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+addingChore.getAssigned();
+            String assigned = addingChore.getAssigned();
+            if(addingChore.getAssigned() == null) {
+                assigned = "No one";
+            }
+            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+assigned;
             choreList[i] = choreString;
         }
         for(int i = 0; i < kitList.size(); i++){
             Chore addingChore = kitList.get(i);
-            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+addingChore.getAssigned();
+            String assigned = addingChore.getAssigned();
+            if(addingChore.getAssigned() == null) {
+                assigned = "No one";
+            }
+            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+assigned;
             choreList2[i] = choreString;
         }
         for(int i = 0; i < bathList.size(); i++){
             Chore addingChore = bathList.get(i);
-            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+addingChore.getAssigned();
+            String assigned = addingChore.getAssigned();
+            if(addingChore.getAssigned() == null) {
+                assigned = "No one";
+            }
+            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+assigned;
             choreList3[i] = choreString;
         }
         for(int i = 0; i < outList.size(); i++){
             Chore addingChore = outList.get(i);
-            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+addingChore.getAssigned();
+            String assigned = addingChore.getAssigned();
+            if(addingChore.getAssigned() == null) {
+                assigned = "No one";
+            }
+            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+assigned;
             choreList4[i] = choreString;
         }
         for(int i = 0; i < fullList.size(); i++){
             Chore addingChore = fullList.get(i);
-            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+addingChore.getAssigned();
+            String assigned = addingChore.getAssigned();
+            if(addingChore.getAssigned() == null) {
+                assigned = "No one";
+            }
+            choreString = addingChore.getName() + "\nDue: " + addingChore.getDueDate() + "\nAssigned to: "+assigned;
             choreList5[i] = choreString;
         }
 

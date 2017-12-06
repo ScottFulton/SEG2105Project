@@ -136,7 +136,7 @@ public class Chore {
     }
     //sets isComplete to true and resets the assign
     public void complete(){
-        this.setAssigned("No one");
+        this.setAssigned(null);
         isCompleted = true;
     }
 
