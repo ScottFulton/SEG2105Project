@@ -95,7 +95,7 @@ public class ManageChores extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode== RESULT_CANCELED) return;
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
+        if(resultCode==-2){
             try {
                 newChoreList[counter].setAssigned(data.getStringExtra("name"));
                 dbHandler.updateChore(newChoreList[counter]);
@@ -104,7 +104,9 @@ public class ManageChores extends AppCompatActivity {
                 System.out.println("");
             }
             refresh();
-
+        }
+        if(resultCode == RESULT_OK) {
+            refresh();
         }
     }
     public void refresh(){

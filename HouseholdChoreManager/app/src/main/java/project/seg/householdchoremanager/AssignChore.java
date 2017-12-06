@@ -24,7 +24,7 @@ public class AssignChore extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("name", userList[position].getName());
-                setResult(RESULT_OK, returnIntent);
+                setResult(-2, returnIntent);
                 finish();
             }
         });
