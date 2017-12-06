@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-
+/*
+Accompanying code to the activity_manage_code.xml file
+Access to assigning chores, editing chores, creating chores, and deleting chores is held here
+ */
 public class ManageChores extends AppCompatActivity {
     int counter;
     Chore[] newChoreList;
@@ -30,8 +33,9 @@ public class ManageChores extends AppCompatActivity {
                 startActivityForResult(managerLaunchInterest, 0);
             }
         });
-        ChoreCustomAdapter3 adapter = new ChoreCustomAdapter3(this, choreList,  new BtnClickListener() {
-
+        //Creates the list of chores already made using ChoreCustomAdapter3
+        ChoreCustomAdapter3 adapter = new ChoreCustomAdapter3(this, choreList, new BtnClickListener() {
+            //If delete button is pressed it removes that chore from the database
             @Override
             public void onBtnClick(int position) {
                 // TODO Auto-generated method stub
@@ -41,7 +45,7 @@ public class ManageChores extends AppCompatActivity {
             }
 
         }, new BtnClickListener() {
-
+            //If Edit button is pressed passes the information the chore to be edited to edit chore through an intent
             @Override
             public void onBtnClick(int position) {
                 // TODO Auto-generated method stub
@@ -59,7 +63,7 @@ public class ManageChores extends AppCompatActivity {
             }
 
         }, new BtnClickListener() {
-
+            //If assignTo button is pressed, launches the assignChore activity
             @Override
             public void onBtnClick(int position) {
                 // TODO Auto-generated method stub
@@ -71,12 +75,10 @@ public class ManageChores extends AppCompatActivity {
             }
         }
         , new BtnClickListener() {
-
+            //Deallocates the chore from the user its assigned to if the Deallocate button is pressed
                 @Override
                 public void onBtnClick(int position) {
                     // TODO Auto-generated method stub
-                    // Call your function which creates and shows the dialog here
-                    Log.d("SSSSs", "TEST");
                     choreList[position].setAssigned("");
                     final  Chore chore = choreList[position];
                     dbHandler.updateChore(chore);
@@ -85,11 +87,14 @@ public class ManageChores extends AppCompatActivity {
             });
         listView.setAdapter(adapter);
     }
+
+    //On Click method for Add Chore button, if pressed launches AddChore class
     public void addChore(View view) {
 //Application Context and Activity
         Intent intent = new Intent(getApplicationContext(), EditChore.class);
         startActivityForResult (intent,0);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -109,6 +114,8 @@ public class ManageChores extends AppCompatActivity {
             refresh();
         }
     }
+    //Code to automatically refresh activity when returning from a other class in case something was changed
+    //in the chore list
     public void refresh(){
         Intent refresh = new Intent(this, ManageChores.class);
         startActivity(refresh);

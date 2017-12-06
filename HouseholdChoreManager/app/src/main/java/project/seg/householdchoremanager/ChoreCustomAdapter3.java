@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+/*
+Custom adapter for the chore view in the activity_manage_chores.xml file
+ */
 public class ChoreCustomAdapter3 extends ArrayAdapter {
     private final Context context;
     private final Chore[] myChores;
@@ -27,7 +29,10 @@ public class ChoreCustomAdapter3 extends ArrayAdapter {
         this.mClickListener3 = listener3;
         this.mClickListener4 = listener4;
     }
-
+    /*
+    Sets values for the Name, Description and Group picture
+    Creates and assigns onClickListeners to each button
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.chore_item_layout2, parent, false);

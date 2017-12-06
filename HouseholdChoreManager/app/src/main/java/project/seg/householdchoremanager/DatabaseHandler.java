@@ -100,6 +100,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return newChoreList;
     }
+    //Finds chore based on chore name and removes it from the database
     public boolean deleteChore(String chorename){
         boolean result = false;
         SQLiteDatabase db = this.getWritableDatabase();
