@@ -62,16 +62,6 @@ public class UserDatabase extends SQLiteOpenHelper{
 
     public void addUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
-        /*
-        int adult;
-        int points = user.getPoints();
-
-        if(user.isAdult()){
-            adult = 1;
-        } else{
-            adult = 0;
-        }
-        */
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
         values.put(COLUMN_PASSWORDS, user.getPassword());
@@ -203,7 +193,7 @@ public class UserDatabase extends SQLiteOpenHelper{
     }
 
 
-    //unused
+    //Unused but just in case
     public void deleteUser(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "Select * FROM " + TABLE_USERS + " WHERE " + COLUMN_NAME + " = \"" + name + "\"";
@@ -215,7 +205,12 @@ public class UserDatabase extends SQLiteOpenHelper{
         }
         db.close();
     }
-    //updates everything except for adult status
+
+    /**
+     * Finds the location in the sql database using the name
+     * of the user and updates the table values accordingly.
+     * @param updatedUser
+     */
     public void updateUser(User updatedUser) {
         //getting database and building a new content values variable from the passed user
         SQLiteDatabase db = this.getWritableDatabase();
@@ -229,8 +224,6 @@ public class UserDatabase extends SQLiteOpenHelper{
         String[] name = {updatedUser.getName()};
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
-            //where clause should use selection args, unsanitzed sql inputs are dangerous and prone
-            //to injection
             db.update(TABLE_USERS,cv, COLUMN_NAME + "=?", name);
             cursor.close();
         }

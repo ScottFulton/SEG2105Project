@@ -115,8 +115,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return result;
     }
+
+    /**
+     * Finds the location in the sql database using the name
+     * of the chore object and updates those values accordingly.
+     * @param chore
+     */
     public void updateChore(Chore chore) {
-        //follows same pattern as updateUser in UserDatabase, see function there
+        //getting database and building a new content values variable from the passed user
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_CHORENAME, chore.getName());
@@ -126,6 +132,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         cv.put(COLUMN_REWARD, chore.getReward());
         cv.put(COLUMN_DUEDATE, chore.getDueDate());
         cv.put(COLUMN_ASSIGNED, chore.getAssigned());
+        //building the search query and finding the proper value
         String query = "Select * FROM " + TABLE_CHORES + " WHERE " + COLUMN_CHORENAME + " = \'" + chore.getName() + "\'";
         String[] name = {chore.getName()};
         Cursor cursor = db.rawQuery(query, null);
@@ -135,8 +142,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+    /**
+     * Alternate version of updateChore instead of using the name of the chore
+     * in order to find it in the database, it uses another parameter, oldName.
+     * Everything functions the same as above.
+     * @param chore
+     * @param oldName
+     */
     public void updateChore(Chore chore, String oldName) {
-        //if the name of the chore is being changed, this method is called
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_CHORENAME, chore.getName());

@@ -154,7 +154,7 @@ public class EditChore extends AppCompatActivity {
 
     //Starts the selectGroup image function if the image at the top of the xml file is clicked
     public void OnSetAvatarButton(View view) {
-//Application Context and Activity
+        //Application Context and Activity
         Intent intent = new Intent(getApplicationContext(), SelectGroup.class);
         startActivityForResult (intent,0);
     }
@@ -169,12 +169,12 @@ public class EditChore extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_CANCELED) return;
-//Getting the Avatar Image we show to our users
+        //Getting the Avatar Image we show to our users
         ImageView groupImg = (ImageView) findViewById(R.id.groupImg);
         TextView groupTxt = (TextView) findViewById(R.id.groupTxt);
-//Figuring out the correct image
-        String drawableName = "ic_launcher";
-        String groupName = "Click on image to select group";
+        //Figuring out the correct image
+        String drawableName;
+        String groupName;
         switch (data.getIntExtra("imageID",R.id.groupImg)) {
             case R.id.bedroomImg:
                 drawableName = "bedroom";

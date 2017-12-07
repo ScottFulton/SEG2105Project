@@ -24,8 +24,7 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chore_details);
 
-        Button setComplete = (Button) findViewById(R.id.setCompleteButton);
-        TextView pointsText = (TextView) findViewById(R.id.pointValueText);
+
 
         //Getting sharedPreferences data and getting user
         SharedPreferences sessionDetails = getSharedPreferences("sessionDetails", MODE_PRIVATE);
@@ -42,21 +41,28 @@ public class ChoreDetailsActivity extends AppCompatActivity {
         StringBuilder choreResourcesBuilder = new StringBuilder("What You Need:");
         String groups = intents.getString("group");
 
-
-        //Building the nice-looking list for the what you need section and also adding point text
+        //Building the nice-looking list for the what you need section
         for(String s : choreResourcesArray) {
             choreResourcesBuilder.append("\n - " + s);
         }
-        String choreResources = choreResourcesBuilder.toString(); //Formatted chore resources
-        pointsText.append("Points: " + pointValue);
+        //Newly formatted chore resources string
+        String choreResources = choreResourcesBuilder.toString();
 
-        //Appending appropriate values to the text view in the detail view
+
+        //Appending appropriate values to the various widgets in the detail view
         TextView choreTitle = (TextView)findViewById(R.id.choreTitle);
         choreTitle.append(choreName);
+
         TextView resourceItems = (TextView)findViewById(R.id.resourceItems);
         resourceItems.append(choreResources);
+
         TextView choreDescription = (TextView)findViewById(R.id.choreDescription);
         choreDescription.append(choreDescriptionString);
+
+        TextView pointsText = (TextView) findViewById(R.id.pointValueText);
+        pointsText.append("Points: " + pointValue);
+
+        Button setComplete = (Button) findViewById(R.id.setCompleteButton);
 
         //Image selector based on what group it is in
         ImageView choreImage = (ImageView)findViewById(R.id.choreIcon);
@@ -86,16 +92,19 @@ public class ChoreDetailsActivity extends AppCompatActivity {
             }
         }
         final Chore thisChore = foundChore;
-        //putting points into variable for readability
+        //putting points into variable for readability's sake
         final int points = thisChore.getReward();
 
         setComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent managerLaunchInterest = new Intent(getApplicationContext(), YourChoresActivity.class);
-                thisChore.complete(); //completes the chore
-                onlineUser.setPoints(onlineUser.getPoints() + points); //adds the points to the user
-                Toast.makeText(getApplicationContext(), "Chore completed!", Toast.LENGTH_SHORT).show(); //shows toast for posterity
+                //completes the chore
+                thisChore.complete();
+                //adds the points to the user
+                onlineUser.setPoints(onlineUser.getPoints() + points);
+                //shows toast for posterity
+                Toast.makeText(getApplicationContext(), "Chore completed!", Toast.LENGTH_SHORT).show();
                 //updates both databases
                 udb.updateUser(onlineUser);
                 db.updateChore(thisChore);

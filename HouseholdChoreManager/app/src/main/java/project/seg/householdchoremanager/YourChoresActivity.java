@@ -56,9 +56,9 @@ public class YourChoresActivity extends AppCompatActivity {
         ArrayList<Chore> choreArrayList = new ArrayList<>();
 
         /*
-        * uses the chore database above to build an array list of chores, all chores that have their
-        * assigning matching the username are added to the array list
-         */
+        * Uses the chore database above to build an array list of chores, all chores that have their
+        * assigned user matching the username are added to the array list
+        */
         for (Chore c : DBchoreList) {
             try {
                 if (c.getAssigned().equals(onlineUser.getName())) {
@@ -67,7 +67,7 @@ public class YourChoresActivity extends AppCompatActivity {
             } catch (Exception e) {}
         }
         /*
-        * since the choreArrayList adapter uses arrays instead of array list it is better to convert
+        * Since the choreArrayList adapter uses arrays instead of array list it is better to convert
         * the array list to a static array
         */
         final Chore[] choreList = choreArrayList.toArray(new Chore[choreArrayList.size()]);
@@ -101,7 +101,7 @@ public class YourChoresActivity extends AppCompatActivity {
         });
 
         /*
-        SWIPE TO REFRESH CODE
+         * SWIPE TO REFRESH CODE
          */
         SwipeRefreshLayout swipeRefresh = (SwipeRefreshLayout)findViewById(R.id.swipeRefresh);
         swipeRefresh.setOnRefreshListener(
@@ -115,10 +115,9 @@ public class YourChoresActivity extends AppCompatActivity {
 
 
         /*
-        NAV BAR CODE
+         * NAV BAR CODE
          */
         Button groupsButton = (Button) findViewById(R.id.toGroupButton);
-//      Button homeButton = (Button) findViewById(R.id.toHomeButton); <- home button unneeded for this nav bar
         Button logoutButton = (Button) findViewById(R.id.logoutButton);
 
 
@@ -167,13 +166,3 @@ public class YourChoresActivity extends AppCompatActivity {
         this.finish();
     }
 }
-
-//Debug method to bring us to the manageChores activity.
-//Should be removed when we've implemented ChoreView
-//    public void manageChoresOnClick(View view){
-//        Intent newIntent = new Intent(YourChoresActivity.this, YourChoresActivity.class);
-//        newIntent.putExtra("USERNAME", s);
-//        startActivity(newIntent);
-//    }
-
-//}

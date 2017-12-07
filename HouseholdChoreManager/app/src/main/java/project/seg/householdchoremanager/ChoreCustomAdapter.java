@@ -23,19 +23,17 @@ public class ChoreCustomAdapter extends ArrayAdapter {
         this.myChores = choreList;
     }
 
-    private static int getStringIdentifier(Context context, String name) {
-        return context.getResources().getIdentifier(name, "string", context.getPackageName());
-    }
-
     public View getView(int position, View convertView, ViewGroup parent) {
+        //putting group value in variable for readability 
         String groups = myChores[position].getGroup();
+        //populating the chore view
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.chore_item_layout, parent, false);
         TextView choreNameTextField = (TextView) rowView.findViewById(R.id.itemName);
         TextView choreDescriptionTextField = (TextView) rowView.findViewById(R.id.itemDescription);
         ImageView choreImage = (ImageView) rowView.findViewById(R.id.groupIcon);
-        //int id = choreImage.getContext().getResources().getIdentifier(groups, "drawable", context.getPackageName());
 
+        //applying appropriate group values
         if(myChores[position]!=null) {
             choreNameTextField.setText(myChores[position].getName());
             choreDescriptionTextField.setText(myChores[position].getDescription());
